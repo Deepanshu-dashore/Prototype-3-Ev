@@ -1,26 +1,53 @@
+@import url('https://api.fontshare.com/v2/css?f%5B%5D=general-sans@300,400,500,600,700,900&display=swap');
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  --font-sans: var(--font-manrope), sans-serif;
+  --font-general-sans: 'General Sans', sans-serif;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* ── Core palette ── */
+  --color-primary: #0F172A;        /* Slate 900 — headings, dark text, dark buttons */
+  --color-background: #F8FAFC;     /* Slate 50  — page canvas */
+  --color-surface: #FFFFFF;        /* Pure white — cards, panels */
+  --color-accent-blue: #00B8FF;    /* Cyan — secondary accent */
+  --color-accent-indigo: #4F46E5;  /* Indigo 600 — primary accent, CTAs */
+  --color-success: #22C55E;        /* Green 500 — success states */
+  --color-neutral-gray: #64748B;   /* Slate 500 — muted body text */
+  --color-borders: #E2E8F0;        /* Slate 200 — separators, card edges */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Legacy aliases — keep for backward compatibility */
+  --color-electric-cobalt: #4F46E5;
+  --color-muted-steel: #64748B;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-primary);
+  font-family: var(--font-sans);
+  margin: 0;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-borders);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-indigo);
+}
+
+/* ── Selection ── */
+::selection {
+  background-color: #4F46E5;
+  color: #FFFFFF;
 }

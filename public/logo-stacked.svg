@@ -1,0 +1,16 @@
+<svg width="120" height="85" viewBox="0 0 120 85" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Stacked Icon Centered -->
+  <rect x="40" width="40" height="40" rx="10" fill="#0F172A" />
+  <path d="M62.5 8L53 22H60L57.5 32L68 18H61L62.5 8Z" fill="url(#logo-gradient)" stroke-linecap="round" stroke-linejoin="round" />
+  
+  <!-- Stacked Text Centered -->
+  <text x="60" y="60" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="900" letter-spacing="0.08em" fill="#0F172A" text-anchor="middle">OBSIDIAN</text>
+  <text x="60" y="76" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="900" letter-spacing="0.08em" fill="#4F46E5" text-anchor="middle">KINETIC</text>
+
+  <defs>
+    <linearGradient id="logo-gradient" x1="53" y1="8" x2="68" y2="32" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#818CF8" />
+      <stop offset="1" stop-color="#4F46E5" />
+    </linearGradient>
+  </defs>
+</svg>
