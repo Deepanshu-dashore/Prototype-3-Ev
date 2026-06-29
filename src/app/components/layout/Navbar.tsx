@@ -16,8 +16,12 @@ interface CartItem {
   quantity: number;
 }
 
+interface NavbarProps {
+  theme?: "light" | "dark";
+}
+
 // Inner navbar content that uses search parameters
-function NavbarContent() {
+function NavbarContent({ theme = "light" }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -44,6 +48,8 @@ function NavbarContent() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const catParam = searchParams ? searchParams.get("cat") : null;
+
+  const navTextColor = theme === "dark" ? "text-slate-300 hover:text-white" : "text-slate-600 hover:text-slate-900";
 
   // Monitor window scroll
   useEffect(() => {
@@ -124,19 +130,27 @@ function NavbarContent() {
         animate={{
           paddingTop: isScrolled ? "12px" : "20px",
           paddingBottom: isScrolled ? "12px" : "20px",
-          backgroundColor: isScrolled ? "rgba(255, 255, 255, 0.95)" : "rgba(255, 255, 255, 0.8)",
-          borderColor: isScrolled ? "rgba(15, 23, 42, 0.08)" : "rgba(15, 23, 42, 0.04)",
-          boxShadow: isScrolled ? "0 4px 20px rgba(15, 23, 42, 0.03)" : "0 0px 0px rgba(0,0,0,0)"
+          backgroundColor: isScrolled 
+            ? (theme === "dark" ? "rgba(15, 23, 42, 0.98)" : "rgba(255, 255, 255, 0.95)") 
+            : (theme === "dark" ? "rgba(15, 23, 42, 0.2)" : "rgba(255, 255, 255, 0.8)"),
+          borderColor: isScrolled 
+            ? (theme === "dark" ? "rgba(255, 255, 255, 0.08)" : "rgba(15, 23, 42, 0.08)") 
+            : (theme === "dark" ? "rgba(255, 255, 255, 0.04)" : "rgba(15, 23, 42, 0.04)"),
+          boxShadow: isScrolled 
+            ? (theme === "dark" ? "0 4px 20px rgba(0, 0, 0, 0.4)" : "0 4px 20px rgba(15, 23, 42, 0.03)") 
+            : "0 0px 0px rgba(0,0,0,0)"
         }}
         transition={{ duration: 0.3, ease: "easeOut" }}
-        className="sticky top-0 z-50 w-full border-b backdrop-blur-md"
+        className={`sticky top-0 z-50 w-full border-b backdrop-blur-md transition-colors duration-300 ${
+          theme === "dark" ? "text-white" : "text-slate-900"
+        }`}
         onMouseLeave={() => setActiveMegaMenu(null)}
       >
         <div className="max-w-[1440px] mx-auto px-8 lg:px-16">
           <div className="flex items-center justify-between">
             
             {/* Logo */}
-            <Link href="/" className="flex items-center group mr-4">
+            <Link href="/" className={`flex items-center group mr-4 ${theme === "dark" ? "invert brightness-200" : ""}`}>
               <Logo variant="full" />
             </Link>
 
@@ -158,7 +172,7 @@ function NavbarContent() {
                     className={`font-sans text-[15px] font-medium tracking-[0.003em] relative py-2 group transition-colors duration-300 ${
                       active
                         ? "text-indigo-600"
-                        : "text-slate-600 hover:text-slate-900"
+                        : navTextColor
                     }`}
                   >
                     {link.name}
@@ -185,21 +199,21 @@ function NavbarContent() {
             <div className="flex items-center gap-5">
               
               {/* Compare Page Link */}
-              <Link href="/compare" className="text-slate-600 hover:text-slate-900 transition-colors p-1" title="Compare Models">
+              <Link href="/compare" className={`${navTextColor} transition-colors p-1`} title="Compare Models">
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 002 2h2a2 2 0 002-2z" />
                 </svg>
               </Link>
 
               {/* Wishlist Link */}
-              <Link href="/wishlist" className="text-slate-600 hover:text-slate-900 transition-colors p-1" title="Wishlist">
+              <Link href="/wishlist" className={`${navTextColor} transition-colors p-1`} title="Wishlist">
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                 </svg>
               </Link>
 
               {/* Account Dashboard Link */}
-              <Link href="/dashboard" className="text-slate-600 hover:text-slate-900 transition-colors p-1" title="My Account">
+              <Link href="/dashboard" className={`${navTextColor} transition-colors p-1`} title="My Account">
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                 </svg>
@@ -210,7 +224,7 @@ function NavbarContent() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setIsCartOpen(true)}
-                className="flex items-center gap-2 text-slate-600 hover:text-slate-900 transition-colors group p-1 relative"
+                className={`flex items-center gap-2 ${navTextColor} transition-colors group p-1 relative`}
                 aria-label="Shopping Cart"
               >
                 <div className="relative">
@@ -223,7 +237,7 @@ function NavbarContent() {
                     </span>
                   )}
                 </div>
-                <span className="font-sans text-xs font-medium tracking-[0.003em] text-slate-600 group-hover:text-slate-900 uppercase transition-colors duration-300 hidden sm:inline">
+                <span className={`font-sans text-xs font-medium tracking-[0.003em] ${theme === "dark" ? "text-slate-300 group-hover:text-white" : "text-slate-600 group-hover:text-slate-900"} uppercase transition-colors duration-300 hidden sm:inline`}>
                   BAG
                 </span>
               </motion.button>
@@ -518,7 +532,7 @@ function NavbarContent() {
 }
 
 // Fallback skeleton header matching top spacing exactly
-function NavbarFallback() {
+function NavbarFallback({ theme = "light" }: NavbarProps) {
   const navLinks = [
     { name: "E-Bikes", href: "/" },
     { name: "Scooters", href: "/scooter" },
@@ -527,11 +541,17 @@ function NavbarFallback() {
     { name: "Support", href: "/contact" },
   ];
 
+  const navTextColor = theme === "dark" ? "text-slate-300 hover:text-white" : "text-slate-600 hover:text-slate-900";
+
   return (
-    <nav className="sticky top-0 z-50 w-full border-b bg-white/80 backdrop-blur-md py-5 border-slate-200/50">
+    <nav className={`sticky top-0 z-50 w-full border-b backdrop-blur-md py-5 transition-colors duration-300 ${
+      theme === "dark" 
+        ? "bg-slate-950/80 border-slate-800/50 text-white" 
+        : "bg-white/80 border-slate-200/50 text-slate-900"
+    }`}>
       <div className="max-w-[1440px] mx-auto px-8 lg:px-16">
         <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center group mr-4">
+          <Link href="/" className={`flex items-center group mr-4 ${theme === "dark" ? "invert brightness-200" : ""}`}>
             <Logo variant="full" />
           </Link>
 
@@ -540,7 +560,7 @@ function NavbarFallback() {
               <Link
                 key={link.name}
                 href={link.href}
-                className="font-sans text-sm font-medium tracking-[0.003em] text-slate-600 py-1"
+                className={`font-sans text-sm font-medium tracking-[0.003em] py-1 ${navTextColor}`}
               >
                 {link.name}
               </Link>
@@ -548,16 +568,16 @@ function NavbarFallback() {
           </div>
 
           <div className="flex items-center gap-5">
-            <div className="text-slate-600 p-1">
+            <div className={`p-1 ${navTextColor}`}>
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
               </svg>
             </div>
-            <div className="flex items-center gap-2 text-slate-600 p-1">
+            <div className={`flex items-center gap-2 p-1 ${navTextColor}`}>
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
               </svg>
-              <span className="font-sans text-xs font-medium tracking-[0.003em] text-slate-600 uppercase">
+              <span className="font-sans text-xs font-medium tracking-[0.003em] uppercase">
                 BAG
               </span>
             </div>
@@ -568,10 +588,10 @@ function NavbarFallback() {
   );
 }
 
-export default function Navbar() {
+export default function Navbar({ theme = "light" }: NavbarProps) {
   return (
-    <Suspense fallback={<NavbarFallback />}>
-      <NavbarContent />
+    <Suspense fallback={<NavbarFallback theme={theme} />}>
+      <NavbarContent theme={theme} />
     </Suspense>
   );
 }

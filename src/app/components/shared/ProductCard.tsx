@@ -123,7 +123,7 @@ export default function ProductCard({
 
           {/* Action Arrow Button */}
           <Link
-            href={category === "bike" ? "/" : `/${category}`}
+            href={category === "accessory" ? `/accessories/${id}` : `/rent/${id}`}
             className="flex items-center justify-center w-9 h-9 rounded-full bg-slate-900 text-white hover:bg-indigo-600 transition-all duration-300 shadow-sm hover:shadow-[0_4px_12px_rgba(79,70,229,0.3)] transform group-hover:translate-x-1 shrink-0"
             aria-label={`View details for ${name}`}
           >
