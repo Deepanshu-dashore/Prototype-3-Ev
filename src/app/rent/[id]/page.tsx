@@ -25,9 +25,9 @@ import {
   Truck,
   PlayCircle
 } from "lucide-react";
-import Navbar from "../../components/layout/Navbar";
-import Footer from "../../components/layout/Footer";
-import ProductCard from "../../components/shared/ProductCard";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
+import ProductCard from "@/components/shared/ProductCard";
 
 interface SpecItem {
   label: string;

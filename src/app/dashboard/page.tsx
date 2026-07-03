@@ -1,7 +1,7 @@
 "use client";
 
-import Navbar from "../components/layout/Navbar";
-import Footer from "../components/layout/Footer";
+import Navbar from "../../components/layout/Navbar";
+import Footer from "../../components/layout/Footer";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
@@ -28,7 +28,7 @@ export default function DashboardPage() {
       status: "Processing Payment",
       statusCode: 1, // 1: order placed, 2: packaging, 3: shipped, 4: delivered
       items: [
-        { name: "VIR NEXUS", price: 39999, image: "/products/vir_nexus.png" },
+        { name: "VIR NEXUS", price: 39999, image: "/products/bike dark.png" },
         { name: "Smart GPS Mount", price: 4499, image: "/products/gps.png" },
       ],
       total: 44498,

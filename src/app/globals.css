@@ -1,5 +1,7 @@
 @import url('https://api.fontshare.com/v2/css?f%5B%5D=general-sans@300,400,500,600,700,900&display=swap');
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
 
 @theme {
   --font-sans: var(--font-manrope), sans-serif;
@@ -14,6 +16,10 @@
   --color-success: #22C55E;        /* Green 500 — success states */
   --color-neutral-gray: #64748B;   /* Slate 500 — muted body text */
   --color-borders: #E2E8F0;        /* Slate 200 — separators, card edges */
+
+  /* Ziko brand colors */
+  --color-ziko-lime: #BFFF07;      /* Vivid neon lime green */
+  --color-ziko-dark: #0A0A0A;      /* Deep premium charcoal/black */
 
   /* Legacy aliases — keep for backward compatibility */
   --color-electric-cobalt: #4F46E5;
@@ -50,4 +56,13 @@ body {
 ::selection {
   background-color: #4F46E5;
   color: #FFFFFF;
+}
+
+/* ── Dark Mode Overrides ── */
+.dark {
+  --color-primary: #F8FAFC;
+  --color-background: #070707;
+  --color-surface: #121212;
+  --color-neutral-gray: #94A3B8;
+  --color-borders: #1F2937;
 }

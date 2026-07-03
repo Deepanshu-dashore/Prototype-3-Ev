@@ -1,42 +1,65 @@
 "use client";
 
-import { useState } from "react";
-import Navbar from "../components/layout/Navbar";
-import Footer from "../components/layout/Footer";
-import ProductCard from "../components/shared/ProductCard";
+import { useState, useEffect } from "react";
+import Navbar from "../../components/layout/Navbar";
+import Footer from "../../components/layout/Footer";
+import ProductCard from "../../components/shared/ProductCard";
 
 export default function WishlistPage() {
-  const [wishlistItems, setWishlistItems] = useState([
-    {
-      id: "vir-nexus",
-      name: "VIR NEXUS",
-      price: 39999,
-      image: "/products/vir_nexus.png",
-      description: "Aero carbon-weave frame with integrated down-tube battery cells.",
-      badge: { text: "BEST SELLER", type: "best" as const },
-      specs: [
-        { label: "Range", value: "70KM" },
-        { label: "Top Speed", value: "25KM/H" },
-      ],
-      category: "bike" as const,
-    },
-    {
-      id: "carbon-helmet",
-      name: "Carbon Aero Helmet",
-      price: 9999,
-      image: "/products/helmet.png",
-      description: "Ultra-lightweight aerodynamic shell with LED safety beacon.",
-      badge: { text: "GLOSS WEAVE", type: "spec" as const },
-      specs: [
-        { label: "Weight", value: "240G" },
-        { label: "Safety", value: "LED Rear" },
-      ],
-      category: "accessory" as const,
-    },
-  ]);
+  const [wishlistItems, setWishlistItems] = useState<any[]>([]);
+
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem("ziko_wishlist");
+      if (stored) {
+        setWishlistItems(JSON.parse(stored));
+      } else {
+        // Fallback default items if none exist
+        const defaultItems = [
+          {
+            id: "vir-nexus",
+            name: "VIR NEXUS",
+            price: 39999,
+            image: "/products/bike dark.png",
+            description: "Aero carbon-weave frame with integrated down-tube battery cells.",
+            badge: { text: "BEST SELLER", type: "best" as const },
+            specs: [
+              { label: "Range", value: "70KM" },
+              { label: "Top Speed", value: "25KM/H" },
+            ],
+            category: "scooter" as const,
+          },
+          {
+            id: "carbon-helmet",
+            name: "Carbon Aero Helmet",
+            price: 9999,
+            image: "/products/helmet.png",
+            description: "Ultra-lightweight aerodynamic shell with LED safety beacon.",
+            badge: { text: "GLOSS WEAVE", type: "spec" as const },
+            specs: [
+              { label: "Weight", value: "240G" },
+              { label: "Safety", value: "LED Rear" },
+            ],
+            category: "accessory" as const,
+          },
+        ];
+        setWishlistItems(defaultItems);
+        localStorage.setItem("ziko_wishlist", JSON.stringify(defaultItems));
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }, []);
 
   const handleRemove = (id: string) => {
-    setWishlistItems(prev => prev.filter(item => item.id !== id));
+    const updated = wishlistItems.filter(item => item.id !== id);
+    setWishlistItems(updated);
+    try {
+      localStorage.setItem("ziko_wishlist", JSON.stringify(updated));
+      window.dispatchEvent(new Event("wishlist-update"));
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   return (
@@ -100,7 +123,7 @@ export default function WishlistPage() {
               <div>
                 <h3 className="font-general-sans text-sm font-bold text-primary uppercase">Wishlist is Empty</h3>
                 <p className="font-sans text-xs text-neutral-gray mt-1 leading-relaxed">
-                  Browse E-Bikes and Scooters to save configurations to your portal.
+                  Browse scooters to save configurations to your portal.
                 </p>
               </div>
             </div>

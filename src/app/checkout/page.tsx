@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Navbar from "../components/layout/Navbar";
-import Footer from "../components/layout/Footer";
+import Navbar from "../../components/layout/Navbar";
+import Footer from "../../components/layout/Footer";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -27,7 +27,7 @@ export default function CheckoutPage() {
       id: "vir-nexus",
       name: "VIR NEXUS",
       price: 39999,
-      image: "/products/vir_nexus.png",
+      image: "/products/bike dark.png",
       quantity: 1,
     },
     {
@@ -223,7 +223,7 @@ export default function CheckoutPage() {
                     <button
                       type="submit"
                       disabled={isProcessing}
-                      className="w-full mt-4 py-4 bg-primary text-white font-sans text-xs font-semibold tracking-wider uppercase rounded-md hover:bg-accent-indigo transition-all duration-300 flex items-center justify-center gap-2"
+                      className="w-full mt-4 py-4 bg-slate-900 dark:bg-zinc-800 text-white font-sans text-xs font-semibold tracking-wider uppercase rounded-md hover:bg-accent-indigo transition-all duration-300 flex items-center justify-center gap-2"
                     >
                       {isProcessing ? (
                         <>
@@ -332,7 +332,7 @@ export default function CheckoutPage() {
                 <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                   <Link
                     href="/"
-                    className="block w-full py-4 bg-primary text-white font-sans text-xs font-semibold tracking-wider uppercase rounded-md hover:bg-accent-indigo transition-colors"
+                    className="block w-full py-4 bg-slate-900 dark:bg-zinc-800 text-white font-sans text-xs font-semibold tracking-wider uppercase rounded-md hover:bg-accent-indigo transition-colors"
                   >
                     RETURN TO SHOWROOM
                   </Link>

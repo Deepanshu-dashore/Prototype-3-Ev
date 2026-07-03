@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Navbar from "../components/layout/Navbar";
-import Footer from "../components/layout/Footer";
+import Navbar from "../../components/layout/Navbar";
+import Footer from "../../components/layout/Footer";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
@@ -15,8 +15,8 @@ const modelDatabase = {
   "vir-nexus": {
     name: "VIR NEXUS",
     price: 39999,
-    image: "/products/vir_nexus.png",
-    category: "Electric Bike",
+    image: "/products/bike dark.png",
+    category: "Electric Scooter",
     specs: {
       composition: "Full Carbon Fiber Weave",
       speed: "25 KM/H",
@@ -32,7 +32,7 @@ const modelDatabase = {
     name: "VIR ATOM",
     price: 49999,
     image: "/products/vir_atom.png",
-    category: "Electric Bike",
+    category: "Electric Scooter",
     specs: {
       composition: "6061-T6 Aluminum Alloy",
       speed: "25 KM/H",
@@ -47,8 +47,8 @@ const modelDatabase = {
   "vir-pro": {
     name: "VIR PRO",
     price: 59999,
-    image: "/products/vir_pro.png",
-    category: "Electric Bike",
+    image: "/products/bike yellow.png",
+    category: "Electric Scooter",
     specs: {
       composition: "Carbon-Titanium Composite",
       speed: "25 KM/H",
@@ -63,7 +63,7 @@ const modelDatabase = {
   "vir-flux": {
     name: "VIR FLUX",
     price: 69999,
-    image: "/products/vir_flux.png",
+    image: "/products/bike blue.webp",
     category: "Electric Scooter",
     specs: {
       composition: "Full Carbon Fiber Deck",
@@ -79,7 +79,7 @@ const modelDatabase = {
   "vir-glide": {
     name: "VIR GLIDE",
     price: 54999,
-    image: "/products/vir_glide.png",
+    image: "/products/bike white.png",
     category: "Electric Scooter",
     specs: {
       composition: "Brushed 6061 Aluminum",

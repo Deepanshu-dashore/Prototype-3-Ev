@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -28,6 +29,51 @@ export default function ProductCard({
   specs = [],
   category,
 }: ProductCardProps) {
+  const [isWishlisted, setIsWishlisted] = useState(false);
+
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem("ziko_wishlist");
+      if (stored) {
+        const items = JSON.parse(stored);
+        const exists = items.some((item: any) => item.id === id);
+        setIsWishlisted(exists);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }, [id]);
+
+  const toggleWishlist = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (localStorage.getItem("ziko_logged_in") !== "true") {
+      alert("Please login to add to wishlist/favorites!");
+      window.dispatchEvent(new Event("open-login-modal"));
+      return;
+    }
+
+    try {
+      const stored = localStorage.getItem("ziko_wishlist");
+      let items = stored ? JSON.parse(stored) : [];
+
+      if (isWishlisted) {
+        items = items.filter((item: any) => item.id !== id);
+        setIsWishlisted(false);
+      } else {
+        const product = { id, name, price, image, description, badge, specs, category };
+        items.push(product);
+        setIsWishlisted(true);
+      }
+
+      localStorage.setItem("ziko_wishlist", JSON.stringify(items));
+      window.dispatchEvent(new Event("wishlist-update"));
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   // Format price to Indian Rupees style (e.g. 39,999)
   const formattedPrice = new Intl.NumberFormat("en-IN", {
     style: "currency",
@@ -39,22 +85,37 @@ export default function ProductCard({
   const getBadgeStyles = (type: string) => {
     switch (type) {
       case "best":
-        return "bg-indigo-50 text-indigo-600 font-bold";
+        return "bg-indigo-600/10 text-indigo-500 font-bold";
       case "new":
         return "bg-indigo-600 text-white font-bold";
       case "premium":
-        return "bg-slate-900 text-white font-bold";
+        return "bg-primary text-background font-bold";
       case "spec":
       default:
-        return "text-slate-500 bg-slate-50";
+        return "text-neutral-gray bg-background border border-borders";
     }
   };
 
   return (
-    <div className="group relative flex flex-col justify-between w-full rounded-2xl bg-white p-0 overflow-hidden shadow-[0_8px_30px_rgba(15,23,42,0.03)] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_20px_40px_rgba(15,23,42,0.08)]">
+    <div className="group relative flex flex-col justify-between w-full rounded-2xl bg-surface border border-borders p-0 overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.02)] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)]">
       
       {/* Top Section: Badge & Image */}
       <div className="relative w-full">
+        {/* Wishlist Heart Button */}
+        <button
+          onClick={toggleWishlist}
+          className="absolute top-4 right-4 z-20 p-2 rounded-full bg-surface/90 hover:bg-surface text-primary shadow-sm border border-borders hover:scale-110 active:scale-95 transition-all duration-300"
+          aria-label={isWishlisted ? "Remove from wishlist" : "Add to wishlist"}
+        >
+          <svg
+            className={`w-3.5 h-3.5 transition-all duration-300 ${isWishlisted ? "fill-red-500 stroke-red-500" : "fill-none stroke-current"}`}
+            viewBox="0 0 24 24"
+            strokeWidth="2.5"
+          >
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+          </svg>
+        </button>
+
         {badge && (
           <div className="absolute top-4 left-4 z-10">
             <span className={`inline-block px-2.5 py-1 rounded-[4px] font-sans text-[9px] font-bold uppercase tracking-[0.02em] ${getBadgeStyles(badge.type)}`}>
@@ -64,7 +125,7 @@ export default function ProductCard({
         )}
 
         {/* Product Image Container */}
-        <div className="relative w-full h-[280px] flex items-center justify-center overflow-hidden bg-slate-50/50">
+        <div className="relative w-full h-[280px] flex items-center justify-center overflow-hidden bg-background/50">
           <Image
             src={image}
             alt={name}
@@ -80,7 +141,7 @@ export default function ProductCard({
       <div className="flex p-6 pt-3 flex-col flex-1 justify-between mt-2 font-sans">
         <div>
           {/* Title - Bold (700) */}
-          <h3 className="font-general-sans text-xl font-bold tracking-tight text-slate-900 uppercase group-hover:text-indigo-600 transition-colors duration-300">
+          <h3 className="font-general-sans text-xl font-bold tracking-tight text-primary uppercase group-hover:text-indigo-600 transition-colors duration-300">
             {name}
           </h3>
 
@@ -92,7 +153,7 @@ export default function ProductCard({
           )}
 
           {/* Price - ExtraBold (800) */}
-          <div className="font-general-sans text-2xl font-extrabold text-slate-900 mt-2.5 tracking-tight">
+          <div className="font-general-sans text-2xl font-extrabold text-primary mt-2.5 tracking-tight">
             {formattedPrice}
           </div>
         </div>
@@ -105,7 +166,7 @@ export default function ProductCard({
               {specs.map((spec, i) => (
                 <div key={i} className="flex flex-row items-baseline gap-1 font-sans text-xs">
                   {/* Spec Value - SemiBold (600) */}
-                  <span className="font-general-sans text-xs font-semibold text-slate-900 tracking-wide">
+                  <span className="font-general-sans text-xs font-semibold text-primary tracking-wide">
                     {spec.value}
                   </span>
                   {/* Spec Label - Medium (500) */}
@@ -124,7 +185,7 @@ export default function ProductCard({
           {/* Action Arrow Button */}
           <Link
             href={category === "accessory" ? `/accessories/${id}` : `/rent/${id}`}
-            className="flex items-center justify-center w-9 h-9 rounded-full bg-slate-900 text-white hover:bg-indigo-600 transition-all duration-300 shadow-sm hover:shadow-[0_4px_12px_rgba(79,70,229,0.3)] transform group-hover:translate-x-1 shrink-0"
+            className="flex items-center justify-center w-9 h-9 rounded-full bg-primary text-background hover:bg-indigo-600 hover:text-white transition-all duration-300 shadow-sm hover:shadow-[0_4px_12px_rgba(79,70,229,0.3)] transform group-hover:translate-x-1 shrink-0"
             aria-label={`View details for ${name}`}
           >
             <svg

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/context/ThemeContext";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -9,21 +10,20 @@ const manrope = Manrope({
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_APP_URL || 
+    process.env.NEXT_PUBLIC_APP_URL ||
     (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000')
   ),
   title: {
     default: "Ziko EV | Premium Electric Mobility",
     template: "%s | Ziko EV"
   },
-  description: "Elite performance electric bikes and scooters engineered for high-velocity precision.",
+  description: "Elite performance electric scooters engineered for high-velocity precision.",
   keywords: [
     "Ziko EV",
-    "Electric Bike",
     "Electric Scooter",
-    "E-Bike",
+    "E-Scooter",
     "Premium Electric Mobility",
-    "Carbon Fiber Electric Bike",
+    "Carbon Fiber Electric Scooter",
     "Performance E-Scooter"
   ],
   authors: [{ name: "Ziko EV Team" }],
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "/",
     title: "Ziko EV | Premium Electric Mobility",
-    description: "Elite performance electric bikes and scooters engineered for high-velocity precision.",
+    description: "Elite performance electric scooters engineered for high-velocity precision.",
     siteName: "Ziko EV",
     images: [
       {
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Ziko EV | Premium Electric Mobility",
-    description: "Elite performance electric bikes and scooters engineered for high-velocity precision.",
+    description: "Elite performance electric scooters engineered for high-velocity precision.",
     images: ["/ziko_ev_og_banner.png"],
   },
   alternates: {
@@ -70,8 +70,25 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${manrope.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-background text-primary font-sans">{children}</body>
+      <head>
+        <script dangerouslySetInnerHTML={{
+          __html: `
+          try {
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+              document.documentElement.classList.add('dark');
+            } else {
+              document.documentElement.classList.remove('dark');
+            }
+          } catch (_) {}
+        ` }} />
+      </head>
+      <body className="min-h-full flex flex-col bg-background text-primary font-sans">
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

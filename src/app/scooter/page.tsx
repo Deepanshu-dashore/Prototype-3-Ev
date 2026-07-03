@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import Navbar from "../components/layout/Navbar";
-import Footer from "../components/layout/Footer";
-import ProductGrid from "../components/shared/ProductGrid";
+import Image from "next/image";
+import Navbar from "../../components/layout/Navbar";
+import Footer from "../../components/layout/Footer";
+import ProductGrid from "../../components/shared/ProductGrid";
 
 export default function ScooterPage() {
   const [filterFrame, setFilterFrame] = useState<"all" | "carbon" | "aluminum" | "composite">("all");
@@ -13,7 +14,7 @@ export default function ScooterPage() {
       id: "vir-flux",
       name: "VIR FLUX",
       price: 69999,
-      image: "/products/vir_flux.png",
+      image: "/products/bike blue.webp",
       description: "Carbon fiber deck plate running Cobalt-Lithium speed telemetry.",
       badge: { text: "CARBON DECK", type: "best" as const },
       specs: [
@@ -27,7 +28,7 @@ export default function ScooterPage() {
       id: "vir-glide",
       name: "VIR GLIDE",
       price: 54999,
-      image: "/products/vir_glide.png",
+      image: "/products/bike white.png",
       description: "Foldable aluminum chassis with dual spring-rate suspension.",
       badge: { text: "ALUMINUM", type: "spec" as const },
       specs: [
@@ -60,22 +61,38 @@ export default function ScooterPage() {
 
   return (
     <div className="flex flex-col min-h-screen bg-background text-primary">
-      <Navbar />
+      <div className="bg-[#070707]">
+        <Navbar theme="dark" />
 
-      {/* Hero Header */}
-      <section className="relative py-24 sm:py-28 bg-surface">
-        <div className="max-w-[1440px] mx-auto px-8 lg:px-16 text-center animate-fadeIn">
-          <span className="font-sans text-xs font-bold text-accent-indigo tracking-widest uppercase block mb-3">
+        {/* Hero Header */}
+        <section className="relative w-full min-h-[60vh] flex flex-col justify-center items-center py-20 lg:py-28 overflow-hidden bg-[#070707] text-white">
+        
+        {/* Panoramic Background Image */}
+        <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
+          <Image
+            src="/products/bikes.png"
+            alt="Ziko EV Bikes Catalog Background"
+            fill
+            priority
+            className="object-cover object-center opacity-100"
+          />
+          {/* Black overlays to guarantee text readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#070707]/40 via-[#070707]/20 to-[#070707]/90" />
+        </div>
+
+        <div className="max-w-[1440px] mx-auto px-8 lg:px-16 text-center relative z-10 animate-fadeIn">
+          <span className="font-sans text-xs font-bold text-[#BFFF07] tracking-widest uppercase block mb-3">
             Elite Velocity Series
           </span>
-          <h1 className="font-general-sans text-3xl sm:text-5xl font-bold tracking-[-0.01em] text-primary uppercase mb-6">
+          <h1 className="font-general-sans text-4xl sm:text-6xl font-black tracking-[-0.01em] text-white uppercase mb-6 drop-shadow-[0_0_12px_rgba(255,255,255,0.1)]">
             Electric Scooters
           </h1>
-          <p className="font-sans text-sm sm:text-base text-neutral-gray max-w-xl mx-auto leading-relaxed">
+          <p className="font-sans text-sm sm:text-base text-slate-300 max-w-xl mx-auto leading-relaxed font-light">
             Engineered with high-tensile carbon frames and electronic speed regulators to deliver unprecedented torque in an ultra-lightweight form factor.
           </p>
         </div>
       </section>
+      </div>
 
       {/* Catalog Listing */}
       <section className="py-24">
@@ -93,7 +110,7 @@ export default function ScooterPage() {
                   onClick={() => setFilterFrame("all")}
                   className={`w-full text-left px-4 py-2.5 rounded-md text-xs font-semibold tracking-wide transition-colors ${
                     filterFrame === "all"
-                      ? "bg-primary text-white"
+                      ? "bg-primary text-white dark:text-black"
                       : "text-primary/75 hover:bg-background hover:text-primary"
                   }`}
                 >
@@ -103,7 +120,7 @@ export default function ScooterPage() {
                   onClick={() => setFilterFrame("carbon")}
                   className={`w-full text-left px-4 py-2.5 rounded-md text-xs font-semibold tracking-wide transition-colors ${
                     filterFrame === "carbon"
-                      ? "bg-primary text-white"
+                      ? "bg-primary text-white dark:text-black"
                       : "text-primary/75 hover:bg-background hover:text-primary"
                   }`}
                 >
@@ -113,7 +130,7 @@ export default function ScooterPage() {
                   onClick={() => setFilterFrame("aluminum")}
                   className={`w-full text-left px-4 py-2.5 rounded-md text-xs font-semibold tracking-wide transition-colors ${
                     filterFrame === "aluminum"
-                      ? "bg-primary text-white"
+                      ? "bg-primary text-white dark:text-black"
                       : "text-primary/75 hover:bg-background hover:text-primary"
                   }`}
                 >
@@ -123,7 +140,7 @@ export default function ScooterPage() {
                   onClick={() => setFilterFrame("composite")}
                   className={`w-full text-left px-4 py-2.5 rounded-md text-xs font-semibold tracking-wide transition-colors ${
                     filterFrame === "composite"
-                      ? "bg-primary text-white"
+                      ? "bg-primary text-white dark:text-black"
                       : "text-primary/75 hover:bg-background hover:text-primary"
                   }`}
                 >
