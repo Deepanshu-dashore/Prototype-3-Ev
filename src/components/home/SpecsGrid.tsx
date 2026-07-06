@@ -1,9 +1,9 @@
 export default function SpecsGrid() {
   return (
-    <section className="relative z-20 w-full px-6 lg:px-12 -mt-4 lg:-mt-6">
-      <div className="max-w-[1440px] mx-auto bg-surface text-primary rounded-[20px] shadow-[0_15px_40px_rgba(0,0,0,0.15)] py-6 sm:py-8 px-6 lg:px-8 border border-borders transition-colors duration-300">
+    <section className="absolute top-0 left-0 right-0 z-20 -translate-y-1/2 w-full px-4 lg:px-6">
+      <div className="max-w-[1440px] mx-auto bg-slate-950 text-white rounded-[24px] border border-white py-7 sm:py-9 px-4 lg:px-6 transition-colors duration-300">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 sm:gap-8 items-center">
-          
+
           {/* Smart Connectivity */}
           <div className="flex items-center gap-3.5 group cursor-default text-left">
             <div className="w-11 h-11 rounded-full bg-[#BFFF07]/10 flex items-center justify-center text-[#95c503] font-bold transition-colors shrink-0 group-hover:bg-[#BFFF07] group-hover:text-black">
@@ -12,7 +12,7 @@ export default function SpecsGrid() {
               </svg>
             </div>
             <div>
-              <h3 className="font-general-sans text-[11px] font-black uppercase tracking-wider">Smart Connectivity</h3>
+              <h3 className="font-sans text-[11px] font-black uppercase tracking-wider">Smart Connectivity</h3>
               <p className="font-sans text-[9px] text-neutral-gray font-medium uppercase tracking-wide mt-0.5">App Control & Live Tracking</p>
             </div>
           </div>
@@ -25,7 +25,7 @@ export default function SpecsGrid() {
               </svg>
             </div>
             <div>
-              <h3 className="font-general-sans text-[11px] font-black uppercase tracking-wider">Regenerative Braking</h3>
+              <h3 className="font-sans text-[11px] font-black uppercase tracking-wider">Regenerative Braking</h3>
               <p className="font-sans text-[9px] text-neutral-gray font-medium uppercase tracking-wide mt-0.5">More Range, More Efficiency</p>
             </div>
           </div>
@@ -38,7 +38,7 @@ export default function SpecsGrid() {
               </svg>
             </div>
             <div>
-              <h3 className="font-general-sans text-[11px] font-black uppercase tracking-wider">IP67 Certified</h3>
+              <h3 className="font-sans text-[11px] font-black uppercase tracking-wider">IP67 Certified</h3>
               <p className="font-sans text-[9px] text-neutral-gray font-medium uppercase tracking-wide mt-0.5">Water & Dust Resistant</p>
             </div>
           </div>
@@ -51,7 +51,7 @@ export default function SpecsGrid() {
               </svg>
             </div>
             <div>
-              <h3 className="font-general-sans text-[11px] font-black uppercase tracking-wider">Reverse Assist</h3>
+              <h3 className="font-sans text-[11px] font-black uppercase tracking-wider">Reverse Assist</h3>
               <p className="font-sans text-[9px] text-neutral-gray font-medium uppercase tracking-wide mt-0.5">Easy Parking & Control</p>
             </div>
           </div>
@@ -64,7 +64,7 @@ export default function SpecsGrid() {
               </svg>
             </div>
             <div>
-              <h3 className="font-general-sans text-[11px] font-black uppercase tracking-wider">Gear Fencing</h3>
+              <h3 className="font-sans text-[11px] font-black uppercase tracking-wider">Gear Fencing</h3>
               <p className="font-sans text-[9px] text-neutral-gray font-medium uppercase tracking-wide mt-0.5">Advanced Safety Alerts</p>
             </div>
           </div>
@@ -77,7 +77,7 @@ export default function SpecsGrid() {
               </svg>
             </div>
             <div>
-              <h3 className="font-general-sans text-[11px] font-black uppercase tracking-wider">OTA Updates</h3>
+              <h3 className="font-sans text-[11px] font-black uppercase tracking-wider">OTA Updates</h3>
               <p className="font-sans text-[9px] text-neutral-gray font-medium uppercase tracking-wide mt-0.5">Always Up To Date</p>
             </div>
           </div>

@@ -4,13 +4,13 @@ import { useEffect, useRef } from "react";
 
 export default function PartnersStrip() {
   const partners = [
-    { name: "ATHER" },
-    { name: "BOSCH" },
-    { name: "TVS" },
-    { name: "AMARON" },
-    { name: "CEAT" },
-    { name: "EXIDE" },
-    { name: "UNO MINDA" }
+    { name: "ATHER", color: "text-[#10b981] hover:text-[#047857]" },
+    { name: "BOSCH", color: "text-[#005691] hover:text-[#e31b23]" },
+    { name: "TVS", color: "text-[#002f6c] hover:text-[#d22630]" },
+    { name: "AMARON", color: "text-[#84cc16] hover:text-[#4d7c0f]" },
+    { name: "CEAT", color: "text-[#003b71] hover:text-[#ff7f00]" },
+    { name: "EXIDE", color: "text-[#e31b23] hover:text-[#9b1016]" },
+    { name: "UNO MINDA", color: "text-[#005a9c] hover:text-[#e31b23]" }
   ];
 
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -48,7 +48,7 @@ export default function PartnersStrip() {
   }, []);
 
   return (
-    <section className="py-12 border-y border-borders bg-surface w-full px-6 lg:px-12 relative overflow-hidden transition-all duration-300">
+    <section className="py-12 border-y border-slate-200 bg-slate-50 w-full px-6 lg:px-12 relative overflow-hidden transition-all duration-300">
       <div className="max-w-[1440px] mx-auto flex items-center justify-between gap-4">
         <button 
           onClick={() => scroll("left")}
@@ -67,7 +67,7 @@ export default function PartnersStrip() {
           {[...partners, ...partners, ...partners].map((partner, idx) => (
             <div 
               key={idx} 
-              className="font-general-sans text-base sm:text-lg md:text-xl lg:text-2xl font-black tracking-widest italic text-neutral-gray/60 hover:text-[#BFFF07] transition-all duration-300 cursor-default select-none uppercase shrink-0 px-4"
+              className={`font-general-sans text-base sm:text-lg md:text-xl lg:text-2xl font-black tracking-widest italic transition-all duration-300 cursor-default select-none uppercase shrink-0 px-4 ${partner.color}`}
             >
               {partner.name}
             </div>

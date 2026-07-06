@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 interface LogoProps {
   variant?: "full" | "compact" | "stacked";
   className?: string;
@@ -54,14 +56,16 @@ export default function Logo({ variant = "full", className = "", size, light = t
     );
   }
 
-  // ── Full (Navbar branding - Default) ──
+  // ── Full (Navbar branding - Default with horizontalLogo.png) ──
   return (
-    <div className={`flex items-center gap-2 shrink-0 ${className}`}>
-      <LogoIcon />
-      <span className={`font-general-sans ${wordMarkSize} font-black tracking-wider italic select-none`}>
-        <span className={zikoTextColor}>ZIKO</span>
-        <span className="text-[#BFFF07] ml-1">EV</span>
-      </span>
+    <div className={`relative flex items-center shrink-0 ${className}`} style={{ height: size ? `${size}px` : "38px", width: size ? `${size * 3.8}px` : "145px" }}>
+      <Image 
+        src="/horizontalLogo.png" 
+        alt="Ziko EV Logo" 
+        fill
+        className="object-contain" 
+        priority
+      />
     </div>
   );
 }

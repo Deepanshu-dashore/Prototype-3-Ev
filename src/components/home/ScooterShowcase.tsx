@@ -1,12 +1,15 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useTheme } from "../../context/ThemeContext";
+import SpecsGrid from "./SpecsGrid";
 
 export default function ScooterShowcase() {
   const { theme } = useTheme();
+  const scrollRef = useRef<HTMLDivElement>(null);
+
   const [selectedColors, setSelectedColors] = useState({
     zikoOne: "darkgrey",
     zikoLite: "white",
@@ -93,403 +96,441 @@ export default function ScooterShowcase() {
     }
   };
 
+  const scroll = (direction: "left" | "right") => {
+    if (scrollRef.current) {
+      const { scrollLeft } = scrollRef.current;
+      const scrollAmount = 360; // Card width + gap
+      const scrollTo = direction === "left" ? scrollLeft - scrollAmount : scrollLeft + scrollAmount;
+      scrollRef.current.scrollTo({ left: scrollTo, behavior: "smooth" });
+    }
+  };
+
   return (
-    <section className="py-24 sm:py-32 w-full px-6 lg:px-12 bg-background transition-colors duration-300">
+    <section className="pt-20 pb-4 sm:pt-24 sm:pb-6 lg:pt-28 lg:pb-8 w-full px-4 lg:px-6 bg-slate-50 transition-colors duration-300 relative z-10">
+      {/* Specs Highlights Strip */}
+      <SpecsGrid />
+
       <div className="max-w-[1440px] mx-auto">
-        {/* Header layout Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-end mb-16">
-          <div className="md:col-span-8">
-            <span className="font-general-sans text-[10px] font-bold text-[#BFFF07] tracking-widest uppercase block mb-3">OUR PREMIUM SCOOTERS</span>
-            <h2 className="font-general-sans text-3xl sm:text-4xl lg:text-[45px] font-black leading-tight uppercase tracking-tight text-primary transition-colors duration-300">
-              Ride the Future with <span className="text-[#BFFF07]">Ziko EV</span>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          
+          {/* Left Column: Heading, Subtitle, CTA */}
+          <div className="lg:col-span-3 flex flex-col justify-start items-start text-left lg:pt-[56px]">
+            <span className="font-sans text-[11px] font-extrabold text-[#4F46E5] tracking-widest uppercase block mb-3">
+              OUR PREMIUM SCOOTERS
+            </span>
+            <h2 className="font-sans text-3xl sm:text-4xl lg:text-[42px] font-black leading-[1.1] uppercase tracking-tight text-slate-900 mb-5">
+              Ride the Future with <br />
+              Ziko <span className="text-[#8ac400] font-black">EV</span>
             </h2>
-            <p className="font-sans text-xs sm:text-sm text-neutral-gray mt-4 leading-relaxed font-light transition-colors duration-300">
+            <p className="font-sans text-xs sm:text-sm text-slate-500 leading-relaxed font-normal">
               Engineered for performance. Built for comfort. Made for India.
             </p>
-          </div>
-          <div className="md:col-span-4 flex md:justify-end">
+            
             <Link 
               href="/scooter" 
-              className="inline-flex items-center gap-2 border border-borders hover:border-primary px-6 py-2.5 rounded-full font-general-sans text-[10px] font-extrabold uppercase tracking-wider hover:bg-surface text-primary transition-all duration-300"
+              className="inline-flex items-center gap-2 border border-slate-300 hover:border-slate-900 px-6 py-2.5 rounded-[8px] font-sans text-[11px] font-extrabold uppercase tracking-wider hover:bg-white text-slate-800 transition-all duration-300 mt-8"
             >
               View All Scooters
-              <span>➔</span>
+              <span className="text-xs">➔</span>
             </Link>
           </div>
-        </div>
 
-        {/* Scooters Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          
-          {/* Scooter 1: ZIKO ONE */}
-          <div className="bg-surface rounded-[16px] border border-borders p-5 flex flex-col justify-between group hover:border-[#BFFF07]/40 hover:shadow-[0_10px_30px_rgba(0,0,0,0.05)] dark:hover:shadow-[0_10px_30px_rgba(0,0,0,0.3)] transition-all duration-300 relative">
-            <div>
-              {/* Wishlist Heart Button */}
-              <button
-                onClick={() => toggleWishlist(
-                  "ziko-one",
-                  "Ziko One",
-                  124999,
-                  selectedColors.zikoOne === "blue" ? "/products/bike blue.webp" : selectedColors.zikoOne === "lightgrey" ? "/products/bike gray.png" : "/products/bike dark.png",
-                  "Flagship Model",
-                  [
-                    { label: "Range", value: "120 KM" },
-                    { label: "Top Speed", value: "75 km/h" },
-                    { label: "Charging", value: "3.5 Hrs" }
-                  ]
-                )}
-                className="absolute top-4 right-4 z-20 p-2 rounded-full bg-white/90 dark:bg-zinc-900/90 text-slate-800 dark:text-slate-200 border border-borders hover:scale-110 active:scale-95 shadow-sm transition-all duration-300"
-                aria-label={wishlistState.zikoOne ? "Remove from wishlist" : "Add to wishlist"}
+          {/* Right Column: Carousel Container */}
+          <div className="lg:col-span-9 relative flex flex-col">
+            
+            {/* Navigation Arrows Top Right */}
+            <div className="flex justify-end gap-2 mb-6">
+              <button 
+                onClick={() => scroll("left")}
+                className="w-8 h-8 rounded-full border border-slate-300 flex items-center justify-center text-slate-700 hover:bg-slate-200 active:scale-95 transition-all"
+                aria-label="Previous scooters"
               >
-                <svg
-                  className={`w-3.5 h-3.5 transition-all duration-300 ${wishlistState.zikoOne ? "fill-red-500 stroke-red-500" : "fill-none stroke-current"}`}
-                  viewBox="0 0 24 24"
-                  strokeWidth="2.5"
-                >
-                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                </svg>
+                <span className="text-sm font-bold">‹</span>
               </button>
-
-              <span className="font-general-sans text-[10px] font-bold text-neutral-gray uppercase tracking-widest block mb-1">Flagship Model</span>
-              <h3 className="font-general-sans text-xl font-black uppercase text-primary tracking-wide">Ziko One</h3>
-              
-              {/* Scooter Product Image */}
-              <div className="relative w-full h-[200px] my-4 flex items-center justify-center transition-transform duration-500 group-hover:scale-105">
-                <Image 
-                  src={selectedColors.zikoOne === "blue" ? "/products/bike blue.webp" : selectedColors.zikoOne === "lightgrey" ? "/products/bike gray.png" : "/products/bike dark.png"} 
-                  alt="Ziko One Electric Scooter" 
-                  fill 
-                  className="object-contain" 
-                />
-              </div>
-
-              {/* Color swatches */}
-              <div className="flex items-center justify-center gap-2 mb-4">
-                <button 
-                  onClick={() => setSelectedColors(prev => ({...prev, zikoOne: "blue"}))}
-                  className={`w-3.5 h-3.5 rounded-full bg-blue-600 border ${selectedColors.zikoOne === "blue" ? "border-[#BFFF07] ring-1 ring-[#BFFF07]" : "border-transparent"}`} 
-                />
-                <button 
-                  onClick={() => setSelectedColors(prev => ({...prev, zikoOne: "darkgrey"}))}
-                  className={`w-3.5 h-3.5 rounded-full bg-slate-800 border ${selectedColors.zikoOne === "darkgrey" ? "border-[#BFFF07] ring-1 ring-[#BFFF07]" : "border-transparent"}`} 
-                />
-                <button 
-                  onClick={() => setSelectedColors(prev => ({...prev, zikoOne: "lightgrey"}))}
-                  className={`w-3.5 h-3.5 rounded-full bg-slate-300 border ${selectedColors.zikoOne === "lightgrey" ? "border-[#BFFF07] ring-1 ring-[#BFFF07]" : "border-transparent"}`} 
-                />
-              </div>
-
-              {/* Specs Row */}
-              <div className="grid grid-cols-3 gap-2 border-y border-borders py-2.5 text-center mb-4">
-                <div>
-                  <span className="block font-general-sans text-xs font-extrabold text-primary">120 KM</span>
-                  <span className="block text-[8px] text-neutral-gray font-bold uppercase tracking-wider mt-0.5">Range</span>
-                </div>
-                <div>
-                  <span className="block font-general-sans text-xs font-extrabold text-primary">75 km/h</span>
-                  <span className="block text-[8px] text-neutral-gray font-bold uppercase tracking-wider mt-0.5">Top Speed</span>
-                </div>
-                <div>
-                  <span className="block font-general-sans text-xs font-extrabold text-primary">3.5 Hrs</span>
-                  <span className="block text-[8px] text-neutral-gray font-bold uppercase tracking-wider mt-0.5">Charging</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Price & Action */}
-            <div className="flex items-center justify-between pt-2">
-              <div>
-                <span className="block text-[9px] text-neutral-gray font-bold uppercase tracking-wider">Starting Price</span>
-                <span className="block font-general-sans text-[18px] font-black text-primary">₹1,24,999</span>
-              </div>
-              <Link 
-                href="/rent/ziko-one" 
-                className={`${
-                  theme === "dark" ? "bg-white text-black" : "bg-primary text-white"
-                } hover:bg-[#BFFF07] hover:text-black font-general-sans text-[9px] font-black uppercase tracking-widest px-4 py-2.5 rounded-[4px] flex items-center gap-1.5 transition-all duration-300`}
+              <button 
+                onClick={() => scroll("right")}
+                className="w-8 h-8 rounded-full border border-slate-300 flex items-center justify-center text-slate-700 hover:bg-slate-200 active:scale-95 transition-all"
+                aria-label="Next scooters"
               >
-                Explore Now
-                <span>➔</span>
-              </Link>
-            </div>
-          </div>
-
-          {/* Scooter 2: ZIKO LITE */}
-          <div className="bg-surface rounded-[16px] border border-borders p-5 flex flex-col justify-between group hover:border-[#BFFF07]/40 hover:shadow-[0_10px_30px_rgba(0,0,0,0.05)] dark:hover:shadow-[0_10px_30px_rgba(0,0,0,0.3)] transition-all duration-300 relative">
-            <div>
-              {/* Wishlist Heart Button */}
-              <button
-                onClick={() => toggleWishlist(
-                  "ziko-lite",
-                  "Ziko Lite",
-                  99999,
-                  selectedColors.zikoLite === "blue" ? "/products/bike blue.webp" : selectedColors.zikoLite === "yellow" ? "/products/bike yellow.png" : "/products/bike white.png",
-                  "Standard Model",
-                  [
-                    { label: "Range", value: "95 KM" },
-                    { label: "Top Speed", value: "65 km/h" },
-                    { label: "Charging", value: "4 Hrs" }
-                  ]
-                )}
-                className="absolute top-4 right-4 z-20 p-2 rounded-full bg-white/90 dark:bg-zinc-900/90 text-slate-800 dark:text-slate-200 border border-borders hover:scale-110 active:scale-95 shadow-sm transition-all duration-300"
-                aria-label={wishlistState.zikoLite ? "Remove from wishlist" : "Add to wishlist"}
-              >
-                <svg
-                  className={`w-3.5 h-3.5 transition-all duration-300 ${wishlistState.zikoLite ? "fill-red-500 stroke-red-500" : "fill-none stroke-current"}`}
-                  viewBox="0 0 24 24"
-                  strokeWidth="2.5"
-                >
-                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                </svg>
+                <span className="text-sm font-bold">›</span>
               </button>
+            </div>
 
-              <span className="font-general-sans text-[10px] font-bold text-neutral-gray uppercase tracking-widest block mb-1">Standard Model</span>
-              <h3 className="font-general-sans text-xl font-black uppercase text-primary tracking-wide">Ziko Lite</h3>
+            {/* Slider Row */}
+            <div 
+              ref={scrollRef}
+              style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+              className="flex overflow-x-auto gap-6 pt-4 pb-6 -mt-4 scroll-smooth snap-x snap-mandatory scrollbar-none"
+            >
               
-              {/* Scooter Product Image */}
-              <div className="relative w-full h-[200px] my-4 flex items-center justify-center transition-transform duration-500 group-hover:scale-105">
-                <Image 
-                  src={selectedColors.zikoLite === "blue" ? "/products/bike blue.webp" : selectedColors.zikoLite === "yellow" ? "/products/bike yellow.png" : "/products/bike white.png"} 
-                  alt="Ziko Lite Electric Scooter" 
-                  fill 
-                  className="object-contain" 
-                />
-              </div>
-
-              {/* Color swatches */}
-              <div className="flex items-center justify-center gap-2 mb-4">
-                <button 
-                  onClick={() => setSelectedColors(prev => ({...prev, zikoLite: "blue"}))}
-                  className={`w-3.5 h-3.5 rounded-full bg-indigo-800 border ${selectedColors.zikoLite === "blue" ? "border-[#BFFF07] ring-1 ring-[#BFFF07]" : "border-transparent"}`} 
-                />
-                <button 
-                  onClick={() => setSelectedColors(prev => ({...prev, zikoLite: "yellow"}))}
-                  className={`w-3.5 h-3.5 rounded-full bg-yellow-400 border ${selectedColors.zikoLite === "yellow" ? "border-[#BFFF07] ring-1 ring-[#BFFF07]" : "border-transparent"}`} 
-                />
-                <button 
-                  onClick={() => setSelectedColors(prev => ({...prev, zikoLite: "white"}))}
-                  className={`w-3.5 h-3.5 rounded-full bg-white border ${selectedColors.zikoLite === "white" ? "border-[#BFFF07] ring-1 ring-[#BFFF07]" : "border-transparent"}`} 
-                />
-              </div>
-
-              {/* Specs Row */}
-              <div className="grid grid-cols-3 gap-2 border-y border-borders py-2.5 text-center mb-4">
+              {/* Card 1: ZIKO ONE */}
+              <div className="min-w-[280px] sm:min-w-[310px] md:min-w-[320px] flex-1 bg-white rounded-[24px] border border-slate-200 p-6 flex flex-col justify-between group shadow-[0_8px_30px_rgba(0,0,0,0.02)] hover:border-[#4F46E5]/40 hover:shadow-[0_20px_40px_rgba(79,70,229,0.08)] hover:-translate-y-1.5 transition-all duration-300 relative snap-start">
                 <div>
-                  <span className="block font-general-sans text-xs font-extrabold text-primary">95 KM</span>
-                  <span className="block text-[8px] text-neutral-gray font-bold uppercase tracking-wider mt-0.5">Range</span>
+                  <div className="flex justify-between items-center mb-2">
+                    <div className="bg-slate-100/90 rounded-[6px] px-3.5 py-1.5 font-sans text-[9px] font-black uppercase tracking-wider text-slate-800">
+                      Ziko One
+                    </div>
+                    {/* Wishlist Heart Button */}
+                    <button
+                      onClick={() => toggleWishlist(
+                        "ziko-one",
+                        "Ziko One",
+                        124999,
+                        selectedColors.zikoOne === "blue" ? "/products/bike blue.webp" : selectedColors.zikoOne === "lightgrey" ? "/products/bike gray.png" : "/products/bike dark.png",
+                        "Flagship Model",
+                        [
+                          { label: "Range", value: "120 KM" },
+                          { label: "Top Speed", value: "75 km/h" },
+                          { label: "Charging", value: "3.5 Hrs" }
+                        ]
+                      )}
+                      className="p-2 rounded-full bg-slate-50 text-slate-800 border border-slate-100 hover:scale-110 active:scale-95 shadow-sm transition-all duration-300"
+                      aria-label={wishlistState.zikoOne ? "Remove from wishlist" : "Add to wishlist"}
+                    >
+                      <svg
+                        className={`w-3.5 h-3.5 transition-all duration-300 ${wishlistState.zikoOne ? "fill-red-500 stroke-red-500" : "fill-none stroke-current"}`}
+                        viewBox="0 0 24 24"
+                        strokeWidth="2.5"
+                      >
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                      </svg>
+                    </button>
+                  </div>
+
+                  {/* Scooter Product Image */}
+                  <div className="relative w-full h-[180px] my-4 flex items-center justify-center transition-transform duration-500 group-hover:scale-105">
+                    <Image 
+                      src={selectedColors.zikoOne === "blue" ? "/products/bike blue.webp" : selectedColors.zikoOne === "lightgrey" ? "/products/bike gray.png" : "/products/bike dark.png"} 
+                      alt="Ziko One Electric Scooter" 
+                      fill 
+                      className="object-contain" 
+                    />
+                  </div>
+
+                  {/* Color swatches */}
+                  <div className="flex items-center justify-center gap-2 mb-6">
+                    <button 
+                      onClick={() => setSelectedColors(prev => ({...prev, zikoOne: "blue"}))}
+                      className={`w-3.5 h-3.5 rounded-full bg-blue-900 border ${selectedColors.zikoOne === "blue" ? "ring-2 ring-offset-2 ring-slate-400" : "border-transparent"}`} 
+                    />
+                    <button 
+                      onClick={() => setSelectedColors(prev => ({...prev, zikoOne: "darkgrey"}))}
+                      className={`w-3.5 h-3.5 rounded-full bg-slate-800 border ${selectedColors.zikoOne === "darkgrey" ? "ring-2 ring-offset-2 ring-slate-400" : "border-transparent"}`} 
+                    />
+                    <button 
+                      onClick={() => setSelectedColors(prev => ({...prev, zikoOne: "lightgrey"}))}
+                      className={`w-3.5 h-3.5 rounded-full bg-slate-300 border ${selectedColors.zikoOne === "lightgrey" ? "ring-2 ring-offset-2 ring-slate-400" : "border-transparent"}`} 
+                    />
+                  </div>
+
+                  {/* Specs Row */}
+                  <div className="grid grid-cols-3 py-3 text-center my-4 divide-x divide-slate-100">
+                    <div className="px-1">
+                      <span className="block font-sans text-xs sm:text-sm font-extrabold text-slate-900">120 KM</span>
+                      <span className="block text-[8px] text-slate-400 font-bold uppercase tracking-wider mt-0.5">Range</span>
+                    </div>
+                    <div className="px-1">
+                      <span className="block font-sans text-xs sm:text-sm font-extrabold text-slate-900">75 km/h</span>
+                      <span className="block text-[8px] text-slate-400 font-bold uppercase tracking-wider mt-0.5">Top Speed</span>
+                    </div>
+                    <div className="px-1">
+                      <span className="block font-sans text-xs sm:text-sm font-extrabold text-slate-900">3.5 Hrs</span>
+                      <span className="block text-[8px] text-slate-400 font-bold uppercase tracking-wider mt-0.5">Charging</span>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <span className="block font-general-sans text-xs font-extrabold text-primary">65 km/h</span>
-                  <span className="block text-[8px] text-neutral-gray font-bold uppercase tracking-wider mt-0.5">Top Speed</span>
-                </div>
-                <div>
-                  <span className="block font-general-sans text-xs font-extrabold text-primary">4 Hrs</span>
-                  <span className="block text-[8px] text-neutral-gray font-bold uppercase tracking-wider mt-0.5">Charging</span>
-                </div>
-              </div>
-            </div>
 
-            {/* Price & Action */}
-            <div className="flex items-center justify-between pt-2">
-              <div>
-                <span className="block text-[9px] text-neutral-gray font-bold uppercase tracking-wider">Starting Price</span>
-                <span className="block font-general-sans text-[18px] font-black text-primary">₹99,999</span>
-              </div>
-              <Link 
-                href="/rent/ziko-lite" 
-                className={`${
-                  theme === "dark" ? "bg-white text-black" : "bg-primary text-white"
-                } hover:bg-[#BFFF07] hover:text-black font-general-sans text-[9px] font-black uppercase tracking-widest px-4 py-2.5 rounded-[4px] flex items-center gap-1.5 transition-all duration-300`}
-              >
-                Explore Now
-                <span>➔</span>
-              </Link>
-            </div>
-          </div>
-
-          {/* Scooter 3: ZIKO GO */}
-          <div className="bg-surface rounded-[16px] border border-borders p-5 flex flex-col justify-between group hover:border-[#BFFF07]/40 hover:shadow-[0_10px_30px_rgba(0,0,0,0.05)] dark:hover:shadow-[0_10px_30px_rgba(0,0,0,0.3)] transition-all duration-300 relative">
-            <div>
-              {/* Wishlist Heart Button */}
-              <button
-                onClick={() => toggleWishlist(
-                  "ziko-go",
-                  "Ziko Go",
-                  79999,
-                  selectedColors.zikoGo === "grey" ? "/products/bike gray.png" : "/products/bike blue.webp",
-                  "Lite Weight",
-                  [
-                    { label: "Range", value: "70 KM" },
-                    { label: "Top Speed", value: "55 km/h" },
-                    { label: "Charging", value: "4.5 Hrs" }
-                  ]
-                )}
-                className="absolute top-4 right-4 z-20 p-2 rounded-full bg-white/90 dark:bg-zinc-900/90 text-slate-800 dark:text-slate-200 border border-borders hover:scale-110 active:scale-95 shadow-sm transition-all duration-300"
-                aria-label={wishlistState.zikoGo ? "Remove from wishlist" : "Add to wishlist"}
-              >
-                <svg
-                  className={`w-3.5 h-3.5 transition-all duration-300 ${wishlistState.zikoGo ? "fill-red-500 stroke-red-500" : "fill-none stroke-current"}`}
-                  viewBox="0 0 24 24"
-                  strokeWidth="2.5"
-                >
-                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                </svg>
-              </button>
-
-              <span className="font-general-sans text-[10px] font-bold text-neutral-gray uppercase tracking-widest block mb-1">Lite Weight</span>
-              <h3 className="font-general-sans text-xl font-black uppercase text-primary tracking-wide">Ziko Go</h3>
-              
-              {/* Scooter Product Image */}
-              <div className="relative w-full h-[200px] my-4 flex items-center justify-center transition-transform duration-500 group-hover:scale-105">
-                <Image 
-                  src={selectedColors.zikoGo === "grey" ? "/products/bike gray.png" : "/products/bike blue.webp"} 
-                  alt="Ziko Go Electric Scooter" 
-                  fill 
-                  className="object-contain" 
-                />
-              </div>
-
-              {/* Color swatches */}
-              <div className="flex items-center justify-center gap-2 mb-4">
-                <button 
-                  onClick={() => setSelectedColors(prev => ({...prev, zikoGo: "lightblue"}))}
-                  className={`w-3.5 h-3.5 rounded-full bg-sky-500 border ${selectedColors.zikoGo === "lightblue" ? "border-[#BFFF07] ring-1 ring-[#BFFF07]" : "border-transparent"}`} 
-                />
-                <button 
-                  onClick={() => setSelectedColors(prev => ({...prev, zikoGo: "blue"}))}
-                  className={`w-3.5 h-3.5 rounded-full bg-blue-800 border ${selectedColors.zikoGo === "blue" ? "border-[#BFFF07] ring-1 ring-[#BFFF07]" : "border-transparent"}`} 
-                />
-                <button 
-                  onClick={() => setSelectedColors(prev => ({...prev, zikoGo: "grey"}))}
-                  className={`w-3.5 h-3.5 rounded-full bg-zinc-600 border ${selectedColors.zikoGo === "grey" ? "border-[#BFFF07] ring-1 ring-[#BFFF07]" : "border-transparent"}`} 
-                />
-              </div>
-
-              {/* Specs Row */}
-              <div className="grid grid-cols-3 gap-2 border-y border-borders py-2.5 text-center mb-4">
-                <div>
-                  <span className="block font-general-sans text-xs font-extrabold text-primary">70 KM</span>
-                  <span className="block text-[8px] text-neutral-gray font-bold uppercase tracking-wider mt-0.5">Range</span>
-                </div>
-                <div>
-                  <span className="block font-general-sans text-xs font-extrabold text-primary">55 km/h</span>
-                  <span className="block text-[8px] text-neutral-gray font-bold uppercase tracking-wider mt-0.5">Top Speed</span>
-                </div>
-                <div>
-                  <span className="block font-general-sans text-xs font-extrabold text-primary">4.5 Hrs</span>
-                  <span className="block text-[8px] text-neutral-gray font-bold uppercase tracking-wider mt-0.5">Charging</span>
+                {/* Price & Action */}
+                <div className="flex items-center justify-between pt-2">
+                  <div>
+                    <span className="block font-sans text-base sm:text-lg font-black text-slate-900">₹1,24,999</span>
+                  </div>
+                  <Link 
+                    href="/rent/ziko-one" 
+                    className="border border-slate-200 hover:border-[#4F46E5] hover:bg-[#4F46E5] hover:text-white text-slate-800 font-sans text-[10px] font-extrabold uppercase tracking-wider px-5 py-2.5 rounded-[8px] flex items-center gap-1.5 transition-all duration-300"
+                  >
+                    Explore Now
+                    <span className="text-xs">➔</span>
+                  </Link>
                 </div>
               </div>
-            </div>
 
-            {/* Price & Action */}
-            <div className="flex items-center justify-between pt-2">
-              <div>
-                <span className="block text-[9px] text-neutral-gray font-bold uppercase tracking-wider">Starting Price</span>
-                <span className="block font-general-sans text-[18px] font-black text-primary">₹79,999</span>
-              </div>
-              <Link 
-                href="/rent/ziko-go" 
-                className={`${
-                  theme === "dark" ? "bg-white text-black" : "bg-primary text-white"
-                } hover:bg-[#BFFF07] hover:text-black font-general-sans text-[9px] font-black uppercase tracking-widest px-4 py-2.5 rounded-[4px] flex items-center gap-1.5 transition-all duration-300`}
-              >
-                Explore Now
-                <span>➔</span>
-              </Link>
-            </div>
-          </div>
-
-          {/* Scooter 4: ZIKO MAX */}
-          <div className="bg-surface rounded-[16px] border border-borders p-5 flex flex-col justify-between group hover:border-[#BFFF07]/40 hover:shadow-[0_10px_30px_rgba(0,0,0,0.05)] dark:hover:shadow-[0_10px_30px_rgba(0,0,0,0.3)] transition-all duration-300 relative">
-            <div>
-              {/* Wishlist Heart Button */}
-              <button
-                onClick={() => toggleWishlist(
-                  "ziko-max",
-                  "Ziko Max",
-                  149999,
-                  selectedColors.zikoMax === "white" ? "/products/bike white.png" : selectedColors.zikoMax === "yellow" ? "/products/bike yellow.png" : "/products/bike gray.png",
-                  "Performance",
-                  [
-                    { label: "Range", value: "150 KM" },
-                    { label: "Top Speed", value: "90 km/h" },
-                    { label: "Charging", value: "3 Hrs" }
-                  ]
-                )}
-                className="absolute top-4 right-4 z-20 p-2 rounded-full bg-white/90 dark:bg-zinc-900/90 text-slate-800 dark:text-slate-200 border border-borders hover:scale-110 active:scale-95 shadow-sm transition-all duration-300"
-                aria-label={wishlistState.zikoMax ? "Remove from wishlist" : "Add to wishlist"}
-              >
-                <svg
-                  className={`w-3.5 h-3.5 transition-all duration-300 ${wishlistState.zikoMax ? "fill-red-500 stroke-red-500" : "fill-none stroke-current"}`}
-                  viewBox="0 0 24 24"
-                  strokeWidth="2.5"
-                >
-                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                </svg>
-              </button>
-
-              <span className="font-general-sans text-[10px] font-bold text-neutral-gray uppercase tracking-widest block mb-1">Performance Model</span>
-              <h3 className="font-general-sans text-xl font-black uppercase text-primary tracking-wide">Ziko Max</h3>
-              
-              {/* Scooter Product Image */}
-              <div className="relative w-full h-[200px] my-4 flex items-center justify-center transition-transform duration-500 group-hover:scale-105">
-                <Image 
-                  src={selectedColors.zikoMax === "white" ? "/products/bike white.png" : selectedColors.zikoMax === "yellow" ? "/products/bike yellow.png" : "/products/bike gray.png"} 
-                  alt="Ziko Max Electric Scooter" 
-                  fill 
-                  className="object-contain" 
-                />
-              </div>
-
-              {/* Color swatches */}
-              <div className="flex items-center justify-center gap-2 mb-4">
-                <button 
-                  onClick={() => setSelectedColors(prev => ({...prev, zikoMax: "white"}))}
-                  className={`w-3.5 h-3.5 rounded-full bg-white border ${selectedColors.zikoMax === "white" ? "border-[#BFFF07] ring-1 ring-[#BFFF07]" : "border-transparent"}`} 
-                />
-                <button 
-                  onClick={() => setSelectedColors(prev => ({...prev, zikoMax: "yellow"}))}
-                  className={`w-3.5 h-3.5 rounded-full bg-yellow-400 border ${selectedColors.zikoMax === "yellow" ? "border-[#BFFF07] ring-1 ring-[#BFFF07]" : "border-transparent"}`} 
-                />
-                <button 
-                  onClick={() => setSelectedColors(prev => ({...prev, zikoMax: "grey"}))}
-                  className={`w-3.5 h-3.5 rounded-full bg-zinc-600 border ${selectedColors.zikoMax === "grey" ? "border-[#BFFF07] ring-1 ring-[#BFFF07]" : "border-transparent"}`} 
-                />
-              </div>
-
-              {/* Specs Row */}
-              <div className="grid grid-cols-3 gap-2 border-y border-borders py-2.5 text-center mb-4">
+              {/* Card 2: ZIKO LITE */}
+              <div className="min-w-[280px] sm:min-w-[310px] md:min-w-[320px] flex-1 bg-white rounded-[24px] border border-slate-200 p-6 flex flex-col justify-between group shadow-[0_8px_30px_rgba(0,0,0,0.02)] hover:border-[#4F46E5]/40 hover:shadow-[0_20px_40px_rgba(79,70,229,0.08)] hover:-translate-y-1.5 transition-all duration-300 relative snap-start">
                 <div>
-                  <span className="block font-general-sans text-xs font-extrabold text-primary">150 KM</span>
-                  <span className="block text-[8px] text-neutral-gray font-bold uppercase tracking-wider mt-0.5">Range</span>
-                </div>
-                <div>
-                  <span className="block font-general-sans text-xs font-extrabold text-primary">90 km/h</span>
-                  <span className="block text-[8px] text-neutral-gray font-bold uppercase tracking-wider mt-0.5">Top Speed</span>
-                </div>
-                <div>
-                  <span className="block font-general-sans text-xs font-extrabold text-primary">3.0 Hrs</span>
-                  <span className="block text-[8px] text-neutral-gray font-bold uppercase tracking-wider mt-0.5">Charging</span>
-                </div>
-              </div>
-            </div>
+                  <div className="flex justify-between items-center mb-2">
+                    <div className="bg-slate-100/90 rounded-[6px] px-3.5 py-1.5 font-sans text-[9px] font-black uppercase tracking-wider text-slate-800">
+                      Ziko Lite
+                    </div>
+                    {/* Wishlist Heart Button */}
+                    <button
+                      onClick={() => toggleWishlist(
+                        "ziko-lite",
+                        "Ziko Lite",
+                        99999,
+                        selectedColors.zikoLite === "blue" ? "/products/bike blue.webp" : selectedColors.zikoLite === "yellow" ? "/products/bike yellow.png" : "/products/bike white.png",
+                        "Standard Model",
+                        [
+                          { label: "Range", value: "95 KM" },
+                          { label: "Top Speed", value: "65 km/h" },
+                          { label: "Charging", value: "4 Hrs" }
+                        ]
+                      )}
+                      className="p-2 rounded-full bg-slate-50 text-slate-800 border border-slate-100 hover:scale-110 active:scale-95 shadow-sm transition-all duration-300"
+                      aria-label={wishlistState.zikoLite ? "Remove from wishlist" : "Add to wishlist"}
+                    >
+                      <svg
+                        className={`w-3.5 h-3.5 transition-all duration-300 ${wishlistState.zikoLite ? "fill-red-500 stroke-red-500" : "fill-none stroke-current"}`}
+                        viewBox="0 0 24 24"
+                        strokeWidth="2.5"
+                      >
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                      </svg>
+                    </button>
+                  </div>
 
-            {/* Price & Action */}
-            <div className="flex items-center justify-between pt-2">
-              <div>
-                <span className="block text-[9px] text-neutral-gray font-bold uppercase tracking-wider">Starting Price</span>
-                <span className="block font-general-sans text-[18px] font-black text-primary">₹1,49,999</span>
+                  {/* Scooter Product Image */}
+                  <div className="relative w-full h-[180px] my-4 flex items-center justify-center transition-transform duration-500 group-hover:scale-105">
+                    <Image 
+                      src={selectedColors.zikoLite === "blue" ? "/products/bike blue.webp" : selectedColors.zikoLite === "yellow" ? "/products/bike yellow.png" : "/products/bike white.png"} 
+                      alt="Ziko Lite Electric Scooter" 
+                      fill 
+                      className="object-contain" 
+                    />
+                  </div>
+
+                  {/* Color swatches */}
+                  <div className="flex items-center justify-center gap-2 mb-6">
+                    <button 
+                      onClick={() => setSelectedColors(prev => ({...prev, zikoLite: "blue"}))}
+                      className={`w-3.5 h-3.5 rounded-full bg-[#1b263b] border ${selectedColors.zikoLite === "blue" ? "ring-2 ring-offset-2 ring-slate-400" : "border-transparent"}`} 
+                    />
+                    <button 
+                      onClick={() => setSelectedColors(prev => ({...prev, zikoLite: "yellow"}))}
+                      className={`w-3.5 h-3.5 rounded-full bg-yellow-500 border ${selectedColors.zikoLite === "yellow" ? "ring-2 ring-offset-2 ring-slate-400" : "border-transparent"}`} 
+                    />
+                    <button 
+                      onClick={() => setSelectedColors(prev => ({...prev, zikoLite: "white"}))}
+                      className={`w-3.5 h-3.5 rounded-full bg-slate-100 border ${selectedColors.zikoLite === "white" ? "ring-2 ring-offset-2 ring-slate-400" : "border-transparent"}`} 
+                    />
+                  </div>
+
+                  {/* Specs Row */}
+                  <div className="grid grid-cols-3 py-3 text-center my-4 divide-x divide-slate-100">
+                    <div className="px-1">
+                      <span className="block font-sans text-xs sm:text-sm font-extrabold text-slate-900">95 KM</span>
+                      <span className="block text-[8px] text-slate-400 font-bold uppercase tracking-wider mt-0.5">Range</span>
+                    </div>
+                    <div className="px-1">
+                      <span className="block font-sans text-xs sm:text-sm font-extrabold text-slate-900">65 km/h</span>
+                      <span className="block text-[8px] text-slate-400 font-bold uppercase tracking-wider mt-0.5">Top Speed</span>
+                    </div>
+                    <div className="px-1">
+                      <span className="block font-sans text-xs sm:text-sm font-extrabold text-slate-900">4 Hrs</span>
+                      <span className="block text-[8px] text-slate-400 font-bold uppercase tracking-wider mt-0.5">Charging</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Price & Action */}
+                <div className="flex items-center justify-between pt-2">
+                  <div>
+                    <span className="block font-sans text-base sm:text-lg font-black text-slate-900">₹99,999</span>
+                  </div>
+                  <Link 
+                    href="/rent/ziko-lite" 
+                    className="border border-slate-200 hover:border-[#4F46E5] hover:bg-[#4F46E5] hover:text-white text-slate-800 font-sans text-[10px] font-extrabold uppercase tracking-wider px-5 py-2.5 rounded-[8px] flex items-center gap-1.5 transition-all duration-300"
+                  >
+                    Explore Now
+                    <span className="text-xs">➔</span>
+                  </Link>
+                </div>
               </div>
-              <Link 
-                href="/rent/ziko-one" 
-                className={`${
-                  theme === "dark" ? "bg-white text-black" : "bg-primary text-white"
-                } hover:bg-[#BFFF07] hover:text-black font-general-sans text-[9px] font-black uppercase tracking-widest px-4 py-2.5 rounded-[4px] flex items-center gap-1.5 transition-all duration-300`}
-              >
-                Explore Now
-                <span>➔</span>
-              </Link>
+
+              {/* Card 3: ZIKO GO */}
+              <div className="min-w-[280px] sm:min-w-[310px] md:min-w-[320px] flex-1 bg-white rounded-[24px] border border-slate-200 p-6 flex flex-col justify-between group shadow-[0_8px_30px_rgba(0,0,0,0.02)] hover:border-[#4F46E5]/40 hover:shadow-[0_20px_40px_rgba(79,70,229,0.08)] hover:-translate-y-1.5 transition-all duration-300 relative snap-start">
+                <div>
+                  <div className="flex justify-between items-center mb-2">
+                    <div className="bg-slate-100/90 rounded-[6px] px-3.5 py-1.5 font-sans text-[9px] font-black uppercase tracking-wider text-slate-800">
+                      Ziko Go
+                    </div>
+                    {/* Wishlist Heart Button */}
+                    <button
+                      onClick={() => toggleWishlist(
+                        "ziko-go",
+                        "Ziko Go",
+                        79999,
+                        selectedColors.zikoGo === "grey" ? "/products/bike gray.png" : "/products/bike blue.webp",
+                        "Lite Weight",
+                        [
+                          { label: "Range", value: "70 KM" },
+                          { label: "Top Speed", value: "55 km/h" },
+                          { label: "Charging", value: "4.5 Hrs" }
+                        ]
+                      )}
+                      className="p-2 rounded-full bg-slate-50 text-slate-800 border border-slate-100 hover:scale-110 active:scale-95 shadow-sm transition-all duration-300"
+                      aria-label={wishlistState.zikoGo ? "Remove from wishlist" : "Add to wishlist"}
+                    >
+                      <svg
+                        className={`w-3.5 h-3.5 transition-all duration-300 ${wishlistState.zikoGo ? "fill-red-500 stroke-red-500" : "fill-none stroke-current"}`}
+                        viewBox="0 0 24 24"
+                        strokeWidth="2.5"
+                      >
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                      </svg>
+                    </button>
+                  </div>
+
+                  {/* Scooter Product Image */}
+                  <div className="relative w-full h-[180px] my-4 flex items-center justify-center transition-transform duration-500 group-hover:scale-105">
+                    <Image 
+                      src={selectedColors.zikoGo === "grey" ? "/products/bike gray.png" : "/products/bike blue.webp"} 
+                      alt="Ziko Go Electric Scooter" 
+                      fill 
+                      className="object-contain" 
+                    />
+                  </div>
+
+                  {/* Color swatches */}
+                  <div className="flex items-center justify-center gap-2 mb-6">
+                    <button 
+                      onClick={() => setSelectedColors(prev => ({...prev, zikoGo: "lightblue"}))}
+                      className={`w-3.5 h-3.5 rounded-full bg-sky-500 border ${selectedColors.zikoGo === "lightblue" ? "ring-2 ring-offset-2 ring-slate-400" : "border-transparent"}`} 
+                    />
+                    <button 
+                      onClick={() => setSelectedColors(prev => ({...prev, zikoGo: "blue"}))}
+                      className={`w-3.5 h-3.5 rounded-full bg-blue-800 border ${selectedColors.zikoGo === "blue" ? "ring-2 ring-offset-2 ring-slate-400" : "border-transparent"}`} 
+                    />
+                    <button 
+                      onClick={() => setSelectedColors(prev => ({...prev, zikoGo: "grey"}))}
+                      className={`w-3.5 h-3.5 rounded-full bg-zinc-600 border ${selectedColors.zikoGo === "grey" ? "ring-2 ring-offset-2 ring-slate-400" : "border-transparent"}`} 
+                    />
+                  </div>
+
+                  {/* Specs Row */}
+                  <div className="grid grid-cols-3 py-3 text-center my-4 divide-x divide-slate-100">
+                    <div className="px-1">
+                      <span className="block font-sans text-xs sm:text-sm font-extrabold text-slate-900">70 KM</span>
+                      <span className="block text-[8px] text-slate-400 font-bold uppercase tracking-wider mt-0.5">Range</span>
+                    </div>
+                    <div className="px-1">
+                      <span className="block font-sans text-xs sm:text-sm font-extrabold text-slate-900">55 km/h</span>
+                      <span className="block text-[8px] text-slate-400 font-bold uppercase tracking-wider mt-0.5">Top Speed</span>
+                    </div>
+                    <div className="px-1">
+                      <span className="block font-sans text-xs sm:text-sm font-extrabold text-slate-900">4.5 Hrs</span>
+                      <span className="block text-[8px] text-slate-400 font-bold uppercase tracking-wider mt-0.5">Charging</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Price & Action */}
+                <div className="flex items-center justify-between pt-2">
+                  <div>
+                    <span className="block font-sans text-base sm:text-lg font-black text-slate-900">₹79,999</span>
+                  </div>
+                  <Link 
+                    href="/rent/ziko-go" 
+                    className="border border-slate-200 hover:border-[#4F46E5] hover:bg-[#4F46E5] hover:text-white text-slate-800 font-sans text-[10px] font-extrabold uppercase tracking-wider px-5 py-2.5 rounded-[8px] flex items-center gap-1.5 transition-all duration-300"
+                  >
+                    Explore Now
+                    <span className="text-xs">➔</span>
+                  </Link>
+                </div>
+              </div>
+
+              {/* Card 4: ZIKO MAX */}
+              <div className="min-w-[280px] sm:min-w-[310px] md:min-w-[320px] flex-1 bg-white rounded-[24px] border border-slate-200 p-6 flex flex-col justify-between group shadow-[0_8px_30px_rgba(0,0,0,0.02)] hover:border-[#4F46E5]/40 hover:shadow-[0_20px_40px_rgba(79,70,229,0.08)] hover:-translate-y-1.5 transition-all duration-300 relative snap-start">
+                <div>
+                  <div className="flex justify-between items-center mb-2">
+                    <div className="bg-slate-100/90 rounded-[6px] px-3.5 py-1.5 font-sans text-[9px] font-black uppercase tracking-wider text-slate-800">
+                      Ziko Max
+                    </div>
+                    {/* Wishlist Heart Button */}
+                    <button
+                      onClick={() => toggleWishlist(
+                        "ziko-max",
+                        "Ziko Max",
+                        149999,
+                        selectedColors.zikoMax === "white" ? "/products/bike white.png" : selectedColors.zikoMax === "yellow" ? "/products/bike yellow.png" : selectedColors.zikoMax === "grey" ? "/products/bike gray.png" : "/products/bike dark.png",
+                        "Performance",
+                        [
+                          { label: "Range", value: "150 KM" },
+                          { label: "Top Speed", value: "90 km/h" },
+                          { label: "Charging", value: "3.0 Hrs" }
+                        ]
+                      )}
+                      className="p-2 rounded-full bg-slate-50 text-slate-800 border border-slate-100 hover:scale-110 active:scale-95 shadow-sm transition-all duration-300"
+                      aria-label={wishlistState.zikoMax ? "Remove from wishlist" : "Add to wishlist"}
+                    >
+                      <svg
+                        className={`w-3.5 h-3.5 transition-all duration-300 ${wishlistState.zikoMax ? "fill-red-500 stroke-red-500" : "fill-none stroke-current"}`}
+                        viewBox="0 0 24 24"
+                        strokeWidth="2.5"
+                      >
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                      </svg>
+                    </button>
+                  </div>
+
+                  {/* Scooter Product Image */}
+                  <div className="relative w-full h-[180px] my-4 flex items-center justify-center transition-transform duration-500 group-hover:scale-105">
+                    <Image 
+                      src={selectedColors.zikoMax === "white" ? "/products/bike white.png" : selectedColors.zikoMax === "yellow" ? "/products/bike yellow.png" : selectedColors.zikoMax === "grey" ? "/products/bike gray.png" : "/products/bike dark.png"} 
+                      alt="Ziko Max Electric Scooter" 
+                      fill 
+                      className="object-contain" 
+                    />
+                  </div>
+
+                  {/* Color swatches */}
+                  <div className="flex items-center justify-center gap-2 mb-6">
+                    <button 
+                      onClick={() => setSelectedColors(prev => ({...prev, zikoMax: "white"}))}
+                      className={`w-3.5 h-3.5 rounded-full bg-slate-100 border ${selectedColors.zikoMax === "white" ? "ring-2 ring-offset-2 ring-slate-400" : "border-transparent"}`} 
+                    />
+                    <button 
+                      onClick={() => setSelectedColors(prev => ({...prev, zikoMax: "yellow"}))}
+                      className={`w-3.5 h-3.5 rounded-full bg-yellow-500 border ${selectedColors.zikoMax === "yellow" ? "ring-2 ring-offset-2 ring-slate-400" : "border-transparent"}`} 
+                    />
+                    <button 
+                      onClick={() => setSelectedColors(prev => ({...prev, zikoMax: "grey"}))}
+                      className={`w-3.5 h-3.5 rounded-full bg-zinc-600 border ${selectedColors.zikoMax === "grey" ? "ring-2 ring-offset-2 ring-slate-400" : "border-transparent"}`} 
+                    />
+                  </div>
+
+                  {/* Specs Row */}
+                  <div className="grid grid-cols-3 py-3 text-center my-4 divide-x divide-slate-100">
+                    <div className="px-1">
+                      <span className="block font-sans text-xs sm:text-sm font-extrabold text-slate-900">150 KM</span>
+                      <span className="block text-[8px] text-slate-400 font-bold uppercase tracking-wider mt-0.5">Range</span>
+                    </div>
+                    <div className="px-1">
+                      <span className="block font-sans text-xs sm:text-sm font-extrabold text-slate-900">90 km/h</span>
+                      <span className="block text-[8px] text-slate-400 font-bold uppercase tracking-wider mt-0.5">Top Speed</span>
+                    </div>
+                    <div className="px-1">
+                      <span className="block font-sans text-xs sm:text-sm font-extrabold text-slate-900">3.0 Hrs</span>
+                      <span className="block text-[8px] text-slate-400 font-bold uppercase tracking-wider mt-0.5">Charging</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Price & Action */}
+                <div className="flex items-center justify-between pt-2">
+                  <div>
+                    <span className="block font-sans text-base sm:text-lg font-black text-slate-900">₹1,49,999</span>
+                  </div>
+                  <Link 
+                    href="/rent/ziko-one" 
+                    className="border border-slate-200 hover:border-[#4F46E5] hover:bg-[#4F46E5] hover:text-white text-slate-800 font-sans text-[10px] font-extrabold uppercase tracking-wider px-5 py-2.5 rounded-[8px] flex items-center gap-1.5 transition-all duration-300"
+                  >
+                    Explore Now
+                    <span className="text-xs">➔</span>
+                  </Link>
+                </div>
+              </div>
+
             </div>
           </div>
 

@@ -10,6 +10,7 @@ import TestRideSection from "@/components/home/TestRideSection";
 import PartnersStrip from "@/components/home/PartnersStrip";
 import BlogSection from "@/components/home/BlogSection";
 import NewsletterSection from "@/components/home/NewsletterSection";
+import FaqSection from "@/components/home/FaqSection";
 
 export default function Home() {
   return (
@@ -21,9 +22,6 @@ export default function Home() {
         {/* Hero Section */}
         <HeroSection />
       </div>
-
-      {/* Specs Highlights Strip */}
-      <SpecsGrid />
 
       {/* Premium Scooters Catalog */}
       <ScooterShowcase />
@@ -42,6 +40,9 @@ export default function Home() {
 
       {/* Newsletter signup strip */}
       <NewsletterSection />
+
+      {/* Frequently Asked Questions */}
+      <FaqSection />
 
       {/* Global Footer */}
       <Footer />
