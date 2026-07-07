@@ -72,18 +72,6 @@ export default function RootLayout({
       className={`${manrope.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <head>
-        <script dangerouslySetInnerHTML={{
-          __html: `
-          try {
-            if (localStorage.theme === 'light') {
-              document.documentElement.classList.remove('dark');
-            } else {
-              document.documentElement.classList.add('dark');
-            }
-          } catch (_) {}
-        ` }} />
-      </head>
       <body className="min-h-full flex flex-col bg-background text-primary font-sans">
         <ThemeProvider>
           {children}

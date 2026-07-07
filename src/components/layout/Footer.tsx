@@ -27,7 +27,7 @@ export default function Footer() {
           
           {/* Brand Info & Newsletter Capture */}
           <div className="md:col-span-5 flex flex-col gap-6">
-            <Logo variant="stacked" size={36} light={theme === "dark"} />
+            <Logo variant="full" />
             <p className="font-sans text-sm font-normal text-neutral-gray max-w-sm leading-relaxed transition-colors duration-300">
               Precision-engineered electric mobility designed for peak aerodynamic efficiency and high-velocity performance. Crafted for those who value technical excellence.
             </p>

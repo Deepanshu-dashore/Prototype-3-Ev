@@ -56,15 +56,14 @@ export default function Logo({ variant = "full", className = "", size, light = t
     );
   }
 
-  // ── Full (Navbar branding - Default with horizontalLogo.png) ──
+  // ── Full (Navbar branding - Default with logo123.jpg) ──
   return (
-    <div className={`relative flex items-center shrink-0 ${className}`} style={{ height: size ? `${size}px` : "38px", width: size ? `${size * 3.8}px` : "145px" }}>
-      <Image 
-        src="/horizontalLogo.png" 
+    <div className={`flex items-center shrink-0 ${className}`}>
+      <img 
+        src="/products/logo123.jpg?v=2" 
         alt="Ziko EV Logo" 
-        fill
-        className="object-contain" 
-        priority
+        style={{ height: size ? `${size}px` : "32px", width: "auto" }}
+        className="object-contain"
       />
     </div>
   );
