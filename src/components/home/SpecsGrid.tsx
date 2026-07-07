@@ -12,8 +12,8 @@ export default function SpecsGrid() {
               </svg>
             </div>
             <div>
-              <h3 className="font-sans text-[11px] font-black uppercase tracking-wider">Smart Connectivity</h3>
-              <p className="font-sans text-[9px] text-neutral-gray font-medium uppercase tracking-wide mt-0.5">App Control & Live Tracking</p>
+              <h3 className="font-sans text-[12px] font-black uppercase tracking-wider">Smart Connectivity</h3>
+              <p className="font-sans text-[10px] text-neutral-gray font-medium uppercase tracking-wide mt-0.5">App Control & Live Tracking</p>
             </div>
           </div>
 
@@ -25,8 +25,8 @@ export default function SpecsGrid() {
               </svg>
             </div>
             <div>
-              <h3 className="font-sans text-[11px] font-black uppercase tracking-wider">Regenerative Braking</h3>
-              <p className="font-sans text-[9px] text-neutral-gray font-medium uppercase tracking-wide mt-0.5">More Range, More Efficiency</p>
+              <h3 className="font-sans text-[12px] font-black uppercase tracking-wider">Regenerative Braking</h3>
+              <p className="font-sans text-[10px] text-neutral-gray font-medium uppercase tracking-wide mt-0.5">More Range, More Efficiency</p>
             </div>
           </div>
 
@@ -38,8 +38,8 @@ export default function SpecsGrid() {
               </svg>
             </div>
             <div>
-              <h3 className="font-sans text-[11px] font-black uppercase tracking-wider">IP67 Certified</h3>
-              <p className="font-sans text-[9px] text-neutral-gray font-medium uppercase tracking-wide mt-0.5">Water & Dust Resistant</p>
+              <h3 className="font-sans text-[12px] font-black uppercase tracking-wider">IP67 Certified</h3>
+              <p className="font-sans text-[10px] text-neutral-gray font-medium uppercase tracking-wide mt-0.5">Water & Dust Resistant</p>
             </div>
           </div>
 
@@ -51,8 +51,8 @@ export default function SpecsGrid() {
               </svg>
             </div>
             <div>
-              <h3 className="font-sans text-[11px] font-black uppercase tracking-wider">Reverse Assist</h3>
-              <p className="font-sans text-[9px] text-neutral-gray font-medium uppercase tracking-wide mt-0.5">Easy Parking & Control</p>
+              <h3 className="font-sans text-[12px] font-black uppercase tracking-wider">Reverse Assist</h3>
+              <p className="font-sans text-[10px] text-neutral-gray font-medium uppercase tracking-wide mt-0.5">Easy Parking & Control</p>
             </div>
           </div>
 
@@ -64,8 +64,8 @@ export default function SpecsGrid() {
               </svg>
             </div>
             <div>
-              <h3 className="font-sans text-[11px] font-black uppercase tracking-wider">Gear Fencing</h3>
-              <p className="font-sans text-[9px] text-neutral-gray font-medium uppercase tracking-wide mt-0.5">Advanced Safety Alerts</p>
+              <h3 className="font-sans text-[12px] font-black uppercase tracking-wider">Gear Fencing</h3>
+              <p className="font-sans text-[10px] text-neutral-gray font-medium uppercase tracking-wide mt-0.5">Advanced Safety Alerts</p>
             </div>
           </div>
 
@@ -77,8 +77,8 @@ export default function SpecsGrid() {
               </svg>
             </div>
             <div>
-              <h3 className="font-sans text-[11px] font-black uppercase tracking-wider">OTA Updates</h3>
-              <p className="font-sans text-[9px] text-neutral-gray font-medium uppercase tracking-wide mt-0.5">Always Up To Date</p>
+              <h3 className="font-sans text-[12px] font-black uppercase tracking-wider">OTA Updates</h3>
+              <p className="font-sans text-[10px] text-neutral-gray font-medium uppercase tracking-wide mt-0.5">Always Up To Date</p>
             </div>
           </div>
 

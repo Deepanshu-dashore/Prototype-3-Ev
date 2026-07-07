@@ -11,10 +11,10 @@ export default function ScooterShowcase() {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const [selectedColors, setSelectedColors] = useState({
-    zikoOne: "darkgrey",
-    zikoLite: "white",
+    zikoOne: "dark",
+    zikoLite: "blue",
     zikoGo: "blue",
-    zikoMax: "yellow"
+    zikoMax: "blue"
   });
 
   const [wishlistState, setWishlistState] = useState({
@@ -176,7 +176,7 @@ export default function ScooterShowcase() {
                         "ziko-one",
                         "Ziko One",
                         124999,
-                        selectedColors.zikoOne === "blue" ? "/products/bike blue.webp" : selectedColors.zikoOne === "lightgrey" ? "/products/bike gray.png" : "/products/bike dark.png",
+                        selectedColors.zikoOne === "blue" ? "/products/bike blue.webp" : selectedColors.zikoOne === "grey" ? "/products/bike gray.png" : selectedColors.zikoOne === "white" ? "/products/bike white.png" : "/products/bike dark.png",
                         "Flagship Model",
                         [
                           { label: "Range", value: "120 KM" },
@@ -198,9 +198,9 @@ export default function ScooterShowcase() {
                   </div>
 
                   {/* Scooter Product Image */}
-                  <div className="relative w-full h-[180px] my-4 flex items-center justify-center transition-transform duration-500 group-hover:scale-105">
+                  <div className="relative w-full h-[155px] my-3 flex items-center justify-center transition-transform duration-500 scale-[1.1] group-hover:scale-[1.15]">
                     <Image 
-                      src={selectedColors.zikoOne === "blue" ? "/products/bike blue.webp" : selectedColors.zikoOne === "lightgrey" ? "/products/bike gray.png" : "/products/bike dark.png"} 
+                      src={selectedColors.zikoOne === "blue" ? "/products/bike blue.webp" : selectedColors.zikoOne === "grey" ? "/products/bike gray.png" : selectedColors.zikoOne === "white" ? "/products/bike white.png" : "/products/bike dark.png"} 
                       alt="Ziko One Electric Scooter" 
                       fill 
                       className="object-contain" 
@@ -208,18 +208,24 @@ export default function ScooterShowcase() {
                   </div>
 
                   {/* Color swatches */}
-                  <div className="flex items-center justify-center gap-2 mb-6">
+                  <div className="flex items-center justify-center gap-2 mb-4">
                     <button 
                       onClick={() => setSelectedColors(prev => ({...prev, zikoOne: "blue"}))}
-                      className={`w-3.5 h-3.5 rounded-full bg-blue-900 border ${selectedColors.zikoOne === "blue" ? "ring-2 ring-offset-2 ring-slate-400" : "border-transparent"}`} 
+                      style={{ backgroundColor: "#0f1e36" }}
+                      className={`w-2.5 h-2.5 rounded-full border border-slate-300/50 transition-all ${selectedColors.zikoOne === "blue" ? "ring-2 ring-offset-2 ring-slate-400" : ""}`}
+                      aria-label="Navy Blue"
                     />
                     <button 
-                      onClick={() => setSelectedColors(prev => ({...prev, zikoOne: "darkgrey"}))}
-                      className={`w-3.5 h-3.5 rounded-full bg-slate-800 border ${selectedColors.zikoOne === "darkgrey" ? "ring-2 ring-offset-2 ring-slate-400" : "border-transparent"}`} 
+                      onClick={() => setSelectedColors(prev => ({...prev, zikoOne: "grey"}))}
+                      style={{ backgroundColor: "#4b5563" }}
+                      className={`w-2.5 h-2.5 rounded-full border border-slate-300/50 transition-all ${selectedColors.zikoOne === "grey" ? "ring-2 ring-offset-2 ring-slate-400" : ""}`}
+                      aria-label="Slate Grey"
                     />
                     <button 
-                      onClick={() => setSelectedColors(prev => ({...prev, zikoOne: "lightgrey"}))}
-                      className={`w-3.5 h-3.5 rounded-full bg-slate-300 border ${selectedColors.zikoOne === "lightgrey" ? "ring-2 ring-offset-2 ring-slate-400" : "border-transparent"}`} 
+                      onClick={() => setSelectedColors(prev => ({...prev, zikoOne: "dark"}))}
+                      style={{ backgroundColor: "#111827" }}
+                      className={`w-2.5 h-2.5 rounded-full border border-slate-300/50 transition-all ${selectedColors.zikoOne === "dark" ? "ring-2 ring-offset-2 ring-slate-400" : ""}`}
+                      aria-label="Dark Slate"
                     />
                   </div>
 
@@ -268,7 +274,7 @@ export default function ScooterShowcase() {
                         "ziko-lite",
                         "Ziko Lite",
                         99999,
-                        selectedColors.zikoLite === "blue" ? "/products/bike blue.webp" : selectedColors.zikoLite === "yellow" ? "/products/bike yellow.png" : "/products/bike white.png",
+                        selectedColors.zikoLite === "blue" ? "/products/bike blue.webp" : selectedColors.zikoLite === "grey" ? "/products/bike gray.png" : selectedColors.zikoLite === "yellow" ? "/products/bike yellow.png" : "/products/bike white.png",
                         "Standard Model",
                         [
                           { label: "Range", value: "95 KM" },
@@ -290,9 +296,9 @@ export default function ScooterShowcase() {
                   </div>
 
                   {/* Scooter Product Image */}
-                  <div className="relative w-full h-[180px] my-4 flex items-center justify-center transition-transform duration-500 group-hover:scale-105">
+                  <div className="relative w-full h-[155px] my-3 flex items-center justify-center transition-transform duration-500 scale-[1.1] group-hover:scale-[1.15]">
                     <Image 
-                      src={selectedColors.zikoLite === "blue" ? "/products/bike blue.webp" : selectedColors.zikoLite === "yellow" ? "/products/bike yellow.png" : "/products/bike white.png"} 
+                      src={selectedColors.zikoLite === "blue" ? "/products/bike blue.webp" : selectedColors.zikoLite === "grey" ? "/products/bike gray.png" : selectedColors.zikoLite === "yellow" ? "/products/bike yellow.png" : "/products/bike white.png"} 
                       alt="Ziko Lite Electric Scooter" 
                       fill 
                       className="object-contain" 
@@ -300,18 +306,24 @@ export default function ScooterShowcase() {
                   </div>
 
                   {/* Color swatches */}
-                  <div className="flex items-center justify-center gap-2 mb-6">
+                  <div className="flex items-center justify-center gap-2 mb-4">
                     <button 
                       onClick={() => setSelectedColors(prev => ({...prev, zikoLite: "blue"}))}
-                      className={`w-3.5 h-3.5 rounded-full bg-[#1b263b] border ${selectedColors.zikoLite === "blue" ? "ring-2 ring-offset-2 ring-slate-400" : "border-transparent"}`} 
+                      style={{ backgroundColor: "#0f1e36" }}
+                      className={`w-2.5 h-2.5 rounded-full border border-slate-300/50 transition-all ${selectedColors.zikoLite === "blue" ? "ring-2 ring-offset-2 ring-slate-400" : ""}`}
+                      aria-label="Navy Blue"
+                    />
+                    <button 
+                      onClick={() => setSelectedColors(prev => ({...prev, zikoLite: "grey"}))}
+                      style={{ backgroundColor: "#4b5563" }}
+                      className={`w-2.5 h-2.5 rounded-full border border-slate-300/50 transition-all ${selectedColors.zikoLite === "grey" ? "ring-2 ring-offset-2 ring-slate-400" : ""}`}
+                      aria-label="Slate Grey"
                     />
                     <button 
                       onClick={() => setSelectedColors(prev => ({...prev, zikoLite: "yellow"}))}
-                      className={`w-3.5 h-3.5 rounded-full bg-yellow-500 border ${selectedColors.zikoLite === "yellow" ? "ring-2 ring-offset-2 ring-slate-400" : "border-transparent"}`} 
-                    />
-                    <button 
-                      onClick={() => setSelectedColors(prev => ({...prev, zikoLite: "white"}))}
-                      className={`w-3.5 h-3.5 rounded-full bg-slate-100 border ${selectedColors.zikoLite === "white" ? "ring-2 ring-offset-2 ring-slate-400" : "border-transparent"}`} 
+                      style={{ backgroundColor: "#5c4033" }}
+                      className={`w-2.5 h-2.5 rounded-full border border-slate-300/50 transition-all ${selectedColors.zikoLite === "yellow" ? "ring-2 ring-offset-2 ring-slate-400" : ""}`}
+                      aria-label="Brown/Bronze"
                     />
                   </div>
 
@@ -360,7 +372,7 @@ export default function ScooterShowcase() {
                         "ziko-go",
                         "Ziko Go",
                         79999,
-                        selectedColors.zikoGo === "grey" ? "/products/bike gray.png" : "/products/bike blue.webp",
+                        selectedColors.zikoGo === "blue" ? "/products/bike blue.webp" : selectedColors.zikoGo === "yellow" ? "/products/bike yellow.png" : selectedColors.zikoGo === "dark" ? "/products/bike dark.png" : "/products/bike gray.png",
                         "Lite Weight",
                         [
                           { label: "Range", value: "70 KM" },
@@ -382,9 +394,9 @@ export default function ScooterShowcase() {
                   </div>
 
                   {/* Scooter Product Image */}
-                  <div className="relative w-full h-[180px] my-4 flex items-center justify-center transition-transform duration-500 group-hover:scale-105">
+                  <div className="relative w-full h-[155px] my-3 flex items-center justify-center transition-transform duration-500 scale-[1.1] group-hover:scale-[1.15]">
                     <Image 
-                      src={selectedColors.zikoGo === "grey" ? "/products/bike gray.png" : "/products/bike blue.webp"} 
+                      src={selectedColors.zikoGo === "blue" ? "/products/bike blue.webp" : selectedColors.zikoGo === "yellow" ? "/products/bike yellow.png" : selectedColors.zikoGo === "dark" ? "/products/bike dark.png" : "/products/bike gray.png"} 
                       alt="Ziko Go Electric Scooter" 
                       fill 
                       className="object-contain" 
@@ -392,18 +404,24 @@ export default function ScooterShowcase() {
                   </div>
 
                   {/* Color swatches */}
-                  <div className="flex items-center justify-center gap-2 mb-6">
-                    <button 
-                      onClick={() => setSelectedColors(prev => ({...prev, zikoGo: "lightblue"}))}
-                      className={`w-3.5 h-3.5 rounded-full bg-sky-500 border ${selectedColors.zikoGo === "lightblue" ? "ring-2 ring-offset-2 ring-slate-400" : "border-transparent"}`} 
-                    />
+                  <div className="flex items-center justify-center gap-2 mb-4">
                     <button 
                       onClick={() => setSelectedColors(prev => ({...prev, zikoGo: "blue"}))}
-                      className={`w-3.5 h-3.5 rounded-full bg-blue-800 border ${selectedColors.zikoGo === "blue" ? "ring-2 ring-offset-2 ring-slate-400" : "border-transparent"}`} 
+                      style={{ backgroundColor: "#60a5fa" }}
+                      className={`w-2.5 h-2.5 rounded-full border border-slate-300/50 transition-all ${selectedColors.zikoGo === "blue" ? "ring-2 ring-offset-2 ring-slate-400" : ""}`}
+                      aria-label="Sky Blue"
                     />
                     <button 
-                      onClick={() => setSelectedColors(prev => ({...prev, zikoGo: "grey"}))}
-                      className={`w-3.5 h-3.5 rounded-full bg-zinc-600 border ${selectedColors.zikoGo === "grey" ? "ring-2 ring-offset-2 ring-slate-400" : "border-transparent"}`} 
+                      onClick={() => setSelectedColors(prev => ({...prev, zikoGo: "yellow"}))}
+                      style={{ backgroundColor: "#52634f" }}
+                      className={`w-2.5 h-2.5 rounded-full border border-slate-300/50 transition-all ${selectedColors.zikoGo === "yellow" ? "ring-2 ring-offset-2 ring-slate-400" : ""}`}
+                      aria-label="Olive Sage"
+                    />
+                    <button 
+                      onClick={() => setSelectedColors(prev => ({...prev, zikoGo: "dark"}))}
+                      style={{ backgroundColor: "#0f1e36" }}
+                      className={`w-2.5 h-2.5 rounded-full border border-slate-300/50 transition-all ${selectedColors.zikoGo === "dark" ? "ring-2 ring-offset-2 ring-slate-400" : ""}`}
+                      aria-label="Navy"
                     />
                   </div>
 
@@ -452,7 +470,7 @@ export default function ScooterShowcase() {
                         "ziko-max",
                         "Ziko Max",
                         149999,
-                        selectedColors.zikoMax === "white" ? "/products/bike white.png" : selectedColors.zikoMax === "yellow" ? "/products/bike yellow.png" : selectedColors.zikoMax === "grey" ? "/products/bike gray.png" : "/products/bike dark.png",
+                        selectedColors.zikoMax === "blue" ? "/products/bike blue.webp" : selectedColors.zikoMax === "grey" ? "/products/bike gray.png" : selectedColors.zikoMax === "yellow" ? "/products/bike yellow.png" : "/products/bike white.png",
                         "Performance",
                         [
                           { label: "Range", value: "150 KM" },
@@ -474,9 +492,9 @@ export default function ScooterShowcase() {
                   </div>
 
                   {/* Scooter Product Image */}
-                  <div className="relative w-full h-[180px] my-4 flex items-center justify-center transition-transform duration-500 group-hover:scale-105">
+                  <div className="relative w-full h-[155px] my-3 flex items-center justify-center transition-transform duration-500 scale-[1.1] group-hover:scale-[1.15]">
                     <Image 
-                      src={selectedColors.zikoMax === "white" ? "/products/bike white.png" : selectedColors.zikoMax === "yellow" ? "/products/bike yellow.png" : selectedColors.zikoMax === "grey" ? "/products/bike gray.png" : "/products/bike dark.png"} 
+                      src={selectedColors.zikoMax === "blue" ? "/products/bike blue.webp" : selectedColors.zikoMax === "grey" ? "/products/bike gray.png" : selectedColors.zikoMax === "yellow" ? "/products/bike yellow.png" : "/products/bike white.png"} 
                       alt="Ziko Max Electric Scooter" 
                       fill 
                       className="object-contain" 
@@ -484,18 +502,24 @@ export default function ScooterShowcase() {
                   </div>
 
                   {/* Color swatches */}
-                  <div className="flex items-center justify-center gap-2 mb-6">
+                  <div className="flex items-center justify-center gap-2 mb-4">
                     <button 
-                      onClick={() => setSelectedColors(prev => ({...prev, zikoMax: "white"}))}
-                      className={`w-3.5 h-3.5 rounded-full bg-slate-100 border ${selectedColors.zikoMax === "white" ? "ring-2 ring-offset-2 ring-slate-400" : "border-transparent"}`} 
-                    />
-                    <button 
-                      onClick={() => setSelectedColors(prev => ({...prev, zikoMax: "yellow"}))}
-                      className={`w-3.5 h-3.5 rounded-full bg-yellow-500 border ${selectedColors.zikoMax === "yellow" ? "ring-2 ring-offset-2 ring-slate-400" : "border-transparent"}`} 
+                      onClick={() => setSelectedColors(prev => ({...prev, zikoMax: "blue"}))}
+                      style={{ backgroundColor: "#0f1e36" }}
+                      className={`w-2.5 h-2.5 rounded-full border border-slate-300/50 transition-all ${selectedColors.zikoMax === "blue" ? "ring-2 ring-offset-2 ring-slate-400" : ""}`}
+                      aria-label="Navy Blue"
                     />
                     <button 
                       onClick={() => setSelectedColors(prev => ({...prev, zikoMax: "grey"}))}
-                      className={`w-3.5 h-3.5 rounded-full bg-zinc-600 border ${selectedColors.zikoMax === "grey" ? "ring-2 ring-offset-2 ring-slate-400" : "border-transparent"}`} 
+                      style={{ backgroundColor: "#4b5563" }}
+                      className={`w-2.5 h-2.5 rounded-full border border-slate-300/50 transition-all ${selectedColors.zikoMax === "grey" ? "ring-2 ring-offset-2 ring-slate-400" : ""}`}
+                      aria-label="Slate Grey"
+                    />
+                    <button 
+                      onClick={() => setSelectedColors(prev => ({...prev, zikoMax: "yellow"}))}
+                      style={{ backgroundColor: "#facc15" }}
+                      className={`w-2.5 h-2.5 rounded-full border border-slate-300/50 transition-all ${selectedColors.zikoMax === "yellow" ? "ring-2 ring-offset-2 ring-slate-400" : ""}`}
+                      aria-label="Yellow"
                     />
                   </div>
 

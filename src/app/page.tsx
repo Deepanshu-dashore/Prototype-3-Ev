@@ -7,7 +7,6 @@ import SpecsGrid from "@/components/home/SpecsGrid";
 import ScooterShowcase from "@/components/home/ScooterShowcase";
 import SparePartsGrid from "@/components/home/SparePartsGrid";
 import TestRideSection from "@/components/home/TestRideSection";
-import PartnersStrip from "@/components/home/PartnersStrip";
 import BlogSection from "@/components/home/BlogSection";
 import NewsletterSection from "@/components/home/NewsletterSection";
 import FaqSection from "@/components/home/FaqSection";
@@ -31,9 +30,6 @@ export default function Home() {
 
       {/* Test Ride & Story Section */}
       <TestRideSection />
-
-      {/* Trusted Partners Carousel */}
-      <PartnersStrip />
 
       {/* Latest Blog & News */}
       <BlogSection />

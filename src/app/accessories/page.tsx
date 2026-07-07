@@ -45,7 +45,7 @@ function AccessoriesContent() {
       id: "fast-charger",
       name: "Fast Charging Station",
       price: 14999,
-      image: "/products/charger.png",
+      image: "/products/charge.png",
       description: "Rapid power bank delivering 80% capacity in 40 minutes.",
       badge: { text: "80% IN 40M", type: "spec" as const },
       specs: [
@@ -59,7 +59,7 @@ function AccessoriesContent() {
       id: "lithium-charger",
       name: "Smart Lithium Charger",
       price: 6499,
-      image: "/products/charger.png",
+      image: "/products/charge.png",
       description: "Smart charger with auto-cutoff and rapid flow rate for Cobalt batteries.",
       badge: { text: "POPULAR", type: "best" as const },
       specs: [
@@ -73,7 +73,7 @@ function AccessoriesContent() {
       id: "hub-motor-controller",
       name: "High-Torque Motor Controller",
       price: 8999,
-      image: "/products/moterColotroller.png",
+      image: "/products/moter.png",
       description: "Direct-drive brushless motor controller with active cooling fin structure.",
       badge: { text: "CNC FIN", type: "new" as const },
       specs: [
@@ -87,7 +87,7 @@ function AccessoriesContent() {
       id: "apex-brakes",
       name: "Apex Hydraulic Brake Set",
       price: 3499,
-      image: "/products/brakes.png",
+      image: "/products/breack.png",
       description: "Mineral oil hydraulic brakes with dual piston calipers for responsive deceleration.",
       badge: { text: "LIMITED", type: "spec" as const },
       specs: [
