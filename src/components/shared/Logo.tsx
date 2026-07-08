@@ -67,4 +67,4 @@ export default function Logo({ variant = "full", className = "", size, light = t
       />
     </div>
   );
-}
+}   
