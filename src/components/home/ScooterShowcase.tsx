@@ -203,6 +203,7 @@ export default function ScooterShowcase() {
                       src={selectedColors.zikoOne === "blue" ? "/products/bike blue.webp" : selectedColors.zikoOne === "grey" ? "/products/bike gray.png" : selectedColors.zikoOne === "white" ? "/products/bike white.png" : "/products/bike dark.png"} 
                       alt="Ziko One Electric Scooter" 
                       fill 
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 330px"
                       className="object-contain" 
                     />
                   </div>
@@ -301,6 +302,7 @@ export default function ScooterShowcase() {
                       src={selectedColors.zikoLite === "blue" ? "/products/bike blue.webp" : selectedColors.zikoLite === "grey" ? "/products/bike gray.png" : selectedColors.zikoLite === "yellow" ? "/products/bike yellow.png" : "/products/bike white.png"} 
                       alt="Ziko Lite Electric Scooter" 
                       fill 
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 330px"
                       className="object-contain" 
                     />
                   </div>
@@ -399,6 +401,7 @@ export default function ScooterShowcase() {
                       src={selectedColors.zikoGo === "blue" ? "/products/bike blue.webp" : selectedColors.zikoGo === "yellow" ? "/products/bike yellow.png" : selectedColors.zikoGo === "dark" ? "/products/bike dark.png" : "/products/bike gray.png"} 
                       alt="Ziko Go Electric Scooter" 
                       fill 
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 330px"
                       className="object-contain" 
                     />
                   </div>
@@ -494,9 +497,10 @@ export default function ScooterShowcase() {
                   {/* Scooter Product Image */}
                   <div className="relative w-full h-[155px] my-3 flex items-center justify-center transition-transform duration-500 scale-[1.1] group-hover:scale-[1.15]">
                     <Image 
-                      src={selectedColors.zikoMax === "blue" ? "/products/bike blue.webp" : selectedColors.zikoMax === "grey" ? "/products/bike gray.png" : selectedColors.zikoMax === "yellow" ? "/products/bike yellow.png" : "/products/bike white.png"} 
+                      src={selectedColors.zikoMax === "blue" ? "/products/bike blue.webp" : selectedColors.zikoMax === "grey" ? "/products/bike gray.png" : selectedColors.zikoMax === "yellow" ? "/products/bike yellow.png" : selectedColors.zikoMax === "white" ? "/products/bike white.png" : "/products/bike white.png"} 
                       alt="Ziko Max Electric Scooter" 
                       fill 
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 330px"
                       className="object-contain" 
                     />
                   </div>

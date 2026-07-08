@@ -185,6 +185,7 @@ export default function TestRideSection() {
                 src="/products/Experience the future of mobility..png" 
                 alt="Experience the future of mobility" 
                 fill 
+                sizes="(max-width: 768px) 100vw, 400px"
                 className="object-cover object-[82%_center]" 
               />
               {/* Dark overlay to ensure form readability on the left */}

@@ -36,6 +36,7 @@ export default function NewsletterSection() {
             src="/Stay Ahead. Stay Electric..png" 
             alt="Stay Ahead. Stay Electric" 
             fill
+            sizes="(max-width: 1024px) 100vw, 450px"
             className="object-contain"
             priority
           />

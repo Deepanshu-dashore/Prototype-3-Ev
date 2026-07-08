@@ -62,6 +62,7 @@ export default function BlogSection() {
                   src={article.image} 
                   alt={article.title} 
                   fill 
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 480px"
                   className="object-cover object-right opacity-100 transition-transform duration-500 group-hover:scale-105" 
                 />
                 {/* Horizontal Dark Gradient Overlay for Left Side Text Legibility */}

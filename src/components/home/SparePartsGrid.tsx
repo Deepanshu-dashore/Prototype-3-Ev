@@ -83,6 +83,7 @@ export default function SparePartsGrid() {
                       src={cat.image}
                       alt={cat.title}
                       fill
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 200px"
                       className="object-contain transition-transform duration-500 scale-[1.3] group-hover:scale-[1.4]"
                     />
                   </div>
