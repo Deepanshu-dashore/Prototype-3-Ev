@@ -18,13 +18,13 @@ export default function NewsletterSection() {
             </p>
           </div>
           
-          <div className="flex items-center gap-2 w-full md:w-auto max-w-md shrink-0">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 w-full xl:max-w-md">
             <input 
               type="email" 
               placeholder="Enter your email address" 
-              className="w-full md:w-56 bg-slate-900 border border-slate-800 rounded-[8px] px-4 py-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#BFFF07] transition-all duration-300"
+              className="w-full bg-slate-900 border border-slate-800 rounded-[8px] px-4 py-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#BFFF07] transition-all duration-300"
             />
-            <button className="bg-[#BFFF07] hover:bg-[#a6df05] text-black font-sans text-[10px] font-black uppercase px-6 py-3.5 rounded-[8px] tracking-widest transition-colors shrink-0 shadow-[0_0_15px_rgba(191,255,7,0.25)]">
+            <button className="bg-[#BFFF07] hover:bg-[#a6df05] text-black font-sans text-[10px] font-black uppercase px-6 py-3 rounded-[8px] tracking-widest transition-colors sm:shrink-0 text-center shadow-[0_0_15px_rgba(191,255,7,0.25)]">
               Subscribe
             </button>
           </div>

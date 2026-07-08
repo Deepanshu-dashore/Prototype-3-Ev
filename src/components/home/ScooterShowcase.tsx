@@ -106,9 +106,11 @@ export default function ScooterShowcase() {
   };
 
   return (
-    <section className="pt-20 pb-4 sm:pt-24 sm:pb-6 lg:pt-28 lg:pb-8 w-full px-4 lg:px-6 bg-slate-50 transition-colors duration-300 relative z-10">
-      {/* Specs Highlights Strip */}
-      <SpecsGrid />
+    <section className="pt-8 lg:pt-28 pb-4 sm:pb-6 lg:pb-8 w-full px-4 lg:px-6 bg-slate-50 transition-colors duration-300 relative z-10">
+      {/* Specs Highlights Strip - Hidden on mobile/tablet, shown on desktop */}
+      <div className="hidden lg:block">
+        <SpecsGrid />
+      </div>
 
       <div className="max-w-[1440px] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
@@ -128,7 +130,7 @@ export default function ScooterShowcase() {
             
             <Link 
               href="/scooter" 
-              className="inline-flex items-center gap-2 border border-slate-300 hover:border-slate-900 px-6 py-2.5 rounded-[8px] font-sans text-[11px] font-extrabold uppercase tracking-wider hover:bg-white text-slate-800 transition-all duration-300 mt-8"
+              className="inline-flex items-center gap-1.5 text-blue-600 hover:text-blue-800 hover:underline font-sans text-[11px] font-extrabold uppercase tracking-wider transition-all duration-300 mt-8"
             >
               View All Scooters
               <span className="text-xs">➔</span>
@@ -254,7 +256,7 @@ export default function ScooterShowcase() {
                   </div>
                   <Link 
                     href="/rent/ziko-one" 
-                    className="border border-slate-200 hover:border-[#4F46E5] hover:bg-[#4F46E5] hover:text-white text-slate-800 font-sans text-[10px] font-extrabold uppercase tracking-wider px-5 py-2.5 rounded-[8px] flex items-center gap-1.5 transition-all duration-300"
+                    className="bg-[#4F46E5] text-white border border-[#4F46E5] hover:bg-transparent hover:text-slate-800 hover:border-slate-200 font-sans text-[10px] font-extrabold uppercase tracking-wider px-5 py-2.5 rounded-[8px] flex items-center gap-1.5 transition-all duration-300"
                   >
                     Explore Now
                     <span className="text-xs">➔</span>
@@ -353,7 +355,7 @@ export default function ScooterShowcase() {
                   </div>
                   <Link 
                     href="/rent/ziko-lite" 
-                    className="border border-slate-200 hover:border-[#4F46E5] hover:bg-[#4F46E5] hover:text-white text-slate-800 font-sans text-[10px] font-extrabold uppercase tracking-wider px-5 py-2.5 rounded-[8px] flex items-center gap-1.5 transition-all duration-300"
+                    className="bg-[#4F46E5] text-white border border-[#4F46E5] hover:bg-transparent hover:text-slate-800 hover:border-slate-200 font-sans text-[10px] font-extrabold uppercase tracking-wider px-5 py-2.5 rounded-[8px] flex items-center gap-1.5 transition-all duration-300"
                   >
                     Explore Now
                     <span className="text-xs">➔</span>
@@ -452,7 +454,7 @@ export default function ScooterShowcase() {
                   </div>
                   <Link 
                     href="/rent/ziko-go" 
-                    className="border border-slate-200 hover:border-[#4F46E5] hover:bg-[#4F46E5] hover:text-white text-slate-800 font-sans text-[10px] font-extrabold uppercase tracking-wider px-5 py-2.5 rounded-[8px] flex items-center gap-1.5 transition-all duration-300"
+                    className="bg-[#4F46E5] text-white border border-[#4F46E5] hover:bg-transparent hover:text-slate-800 hover:border-slate-200 font-sans text-[10px] font-extrabold uppercase tracking-wider px-5 py-2.5 rounded-[8px] flex items-center gap-1.5 transition-all duration-300"
                   >
                     Explore Now
                     <span className="text-xs">➔</span>
@@ -551,7 +553,7 @@ export default function ScooterShowcase() {
                   </div>
                   <Link 
                     href="/rent/ziko-one" 
-                    className="border border-slate-200 hover:border-[#4F46E5] hover:bg-[#4F46E5] hover:text-white text-slate-800 font-sans text-[10px] font-extrabold uppercase tracking-wider px-5 py-2.5 rounded-[8px] flex items-center gap-1.5 transition-all duration-300"
+                    className="bg-[#4F46E5] text-white border border-[#4F46E5] hover:bg-transparent hover:text-slate-800 hover:border-slate-200 font-sans text-[10px] font-extrabold uppercase tracking-wider px-5 py-2.5 rounded-[8px] flex items-center gap-1.5 transition-all duration-300"
                   >
                     Explore Now
                     <span className="text-xs">➔</span>

@@ -16,7 +16,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative w-full min-h-[90vh] flex flex-col justify-center items-center py-20 lg:py-28 overflow-hidden bg-[#070707] text-white">
+    <section className="relative w-full min-h-[90vh] flex flex-col justify-center items-center pt-10 pb-16 lg:py-28 overflow-hidden bg-[#070707] text-white">
       
       {/* Panoramic Hero Background Images with Fade Transition */}
       <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
@@ -45,7 +45,7 @@ export default function HeroSection() {
       <div className="max-w-[1440px] mx-auto px-6 lg:px-12 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
         
         {/* Hero Content Left */}
-        <div className="lg:col-span-6 flex flex-col items-start text-left mt-8 lg:mt-0">
+        <div className="lg:col-span-6 flex flex-col items-start text-left mt-2 lg:mt-0">
           {/* Small Brand Tagline */}
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-white font-sans text-[10px] font-semibold tracking-wider uppercase mb-6">
             <span className="w-1.5 h-1.5 rounded-full bg-[#BFFF07] animate-pulse" />
@@ -89,7 +89,7 @@ export default function HeroSection() {
           </div>
 
           {/* Quick Specs Row */}
-          <div className="grid grid-cols-4 gap-4 sm:gap-8 pt-6 border-t border-white/10 w-full max-w-lg">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-8 pt-6 border-t border-white/10 w-full max-w-lg">
             <div className="flex items-center gap-2.5">
               <div className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
                 <svg className="w-4 h-4 text-[#BFFF07]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

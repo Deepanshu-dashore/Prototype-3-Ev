@@ -70,7 +70,7 @@ export default function SparePartsGrid() {
 
           {/* Right Column: Grid of Category Cards */}
           <div className="xl:col-span-9">
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-6 gap-4">
               {categories.map((cat, idx) => (
                 <Link
                   key={idx}

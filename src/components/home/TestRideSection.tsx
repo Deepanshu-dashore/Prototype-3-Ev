@@ -122,7 +122,7 @@ export default function TestRideSection() {
           </div>
 
           {/* Sub-column 2: Stats (3 cols) */}
-          <div className="md:col-span-3 p-6 lg:p-8 flex flex-col justify-center gap-6 border-y md:border-y-0 md:border-r border-slate-900 bg-[#070b13]">
+          <div className="md:col-span-3 p-6 lg:p-8 grid grid-cols-2 md:flex md:flex-col justify-center gap-6 border-y md:border-y-0 md:border-r border-slate-900 bg-[#070b13]">
             {/* Stat 1 */}
             <div className="flex items-center gap-3 text-left">
               <div className="w-9 h-9 rounded-full border border-[#BFFF07]/20 flex items-center justify-center text-[#BFFF07] shrink-0">

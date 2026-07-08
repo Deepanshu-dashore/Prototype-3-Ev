@@ -3,7 +3,6 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import HeroSection from "@/components/home/HeroSection";
-import SpecsGrid from "@/components/home/SpecsGrid";
 import ScooterShowcase from "@/components/home/ScooterShowcase";
 import SparePartsGrid from "@/components/home/SparePartsGrid";
 import TestRideSection from "@/components/home/TestRideSection";
