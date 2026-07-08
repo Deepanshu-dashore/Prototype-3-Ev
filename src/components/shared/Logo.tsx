@@ -17,18 +17,18 @@ export default function Logo({ variant = "full", className = "", size, light = t
 
   // Stylized Green Z Logo Mark SVG
   const LogoIcon = () => (
-    <svg 
-      width={iconSize} 
-      height={iconSize} 
-      viewBox="0 0 32 32" 
-      fill="none" 
+    <svg
+      width={iconSize}
+      height={iconSize}
+      viewBox="0 0 32 32"
+      fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className="shrink-0"
     >
       {/* Custom styled electric 'Z' mark */}
-      <path 
-        d="M6 6H26L14 18H26L21 26H6L14 14H6V6Z" 
-        fill="#BFFF07" 
+      <path
+        d="M6 6H26L14 18H26L21 26H6L14 14H6V6Z"
+        fill="#BFFF07"
         className="drop-shadow-[0_0_8px_rgba(191,255,7,0.3)]"
       />
     </svg>
@@ -59,9 +59,9 @@ export default function Logo({ variant = "full", className = "", size, light = t
   // ── Full (Navbar branding - Default with logo123.jpg) ──
   return (
     <div className={`flex items-center shrink-0 ${className}`}>
-      <img 
-        src="/products/logo123.jpg?v=2" 
-        alt="Ziko EV Logo" 
+      <img
+        src="/products/logo123.jpg?v=2"
+        alt="Ziko EV Logo"
         style={{ height: size ? `${size}px` : "32px", width: "auto" }}
         className="object-contain"
       />
