@@ -30,18 +30,18 @@ export default function BlogSection() {
   ];
 
   return (
-    <section className="pt-10 pb-8 sm:pt-14 sm:pb-12 w-full px-4 lg:px-6 bg-slate-50 transition-colors duration-300">
+    <section className="pt-10 pb-8 sm:pt-14 sm:pb-12 w-full px-4 lg:px-6 bg-[#070707] transition-colors duration-300">
       <div className="max-w-[1440px] mx-auto">
         {/* Header */}
         <div className="flex items-center justify-between mb-8 px-2">
           <div>
-            <h2 className="font-sans text-3xl sm:text-4xl lg:text-[42px] font-black uppercase tracking-tight text-slate-900 leading-none">
-              Latest from <span className="text-[#95c503]">Ziko EV</span>
+            <h2 className="font-sans text-3xl sm:text-4xl lg:text-[42px] font-black uppercase tracking-tight text-white leading-none">
+              Latest from <span className="text-[#BFFF07]">Ziko EV</span>
             </h2>
           </div>
           <Link 
             href="/dashboard" 
-            className="text-blue-600 hover:text-slate-900 font-sans text-xs font-bold uppercase tracking-wider transition-colors flex items-center gap-1.5"
+            className="text-[#BFFF07] hover:text-white font-sans text-xs font-bold uppercase tracking-wider transition-colors flex items-center gap-1.5"
           >
             View All Articles
             <span className="text-xs">➔</span>

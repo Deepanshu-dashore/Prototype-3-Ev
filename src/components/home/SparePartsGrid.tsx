@@ -43,7 +43,7 @@ export default function SparePartsGrid() {
   ];
 
   return (
-    <section className="py-2 sm:py-4 w-full px-4 lg:px-6 bg-slate-50 transition-colors duration-300">
+    <section className="py-2 sm:py-4 w-full px-4 lg:px-6 bg-[#070707] transition-colors duration-300">
       <div className="max-w-[1440px] mx-auto bg-slate-950 text-white rounded-[24px] border border-slate-900 p-8 lg:p-12">
         <div className="grid grid-cols-1 xl:grid-cols-12 gap-8 items-center">
 

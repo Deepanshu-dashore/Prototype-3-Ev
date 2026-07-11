@@ -186,7 +186,7 @@ function NavbarContent({ theme: propTheme }: NavbarProps) {
             
             {/* Logo */}
             <Link href="/" className="flex items-center group mr-4">
-              <Logo variant="full" light={theme === "dark"} size={48} />
+              <Logo variant="full" light={theme === "dark"} />
             </Link>
 
             {/* Center Navigation Links - Custom active underline state */}
@@ -569,7 +569,7 @@ function NavbarFallback({ theme }: NavbarProps) {
       <div className="max-w-[1440px] mx-auto px-8 lg:px-12">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center group mr-4">
-            <Logo variant="full" light={theme === "dark"} size={48} />
+            <Logo variant="full" light={theme === "dark"} />
           </Link>
 
           <div className="hidden md:flex items-center justify-center flex-1 gap-6 lg:gap-8">

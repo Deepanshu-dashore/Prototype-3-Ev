@@ -4,6 +4,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import HeroSection from "@/components/home/HeroSection";
 import ScooterShowcase from "@/components/home/ScooterShowcase";
+import WhyChoose from "@/components/home/WhyChoose";
 import SparePartsGrid from "@/components/home/SparePartsGrid";
 import TestRideSection from "@/components/home/TestRideSection";
 import BlogSection from "@/components/home/BlogSection";
@@ -24,20 +25,23 @@ export default function Home() {
       {/* Premium Scooters Catalog */}
       <ScooterShowcase />
 
+      {/* Why Choose Ziko EV Section */}
+      <WhyChoose />
+
       {/* Spare Parts Grid */}
-      <SparePartsGrid />
+      {/* <SparePartsGrid /> */}
 
       {/* Test Ride & Story Section */}
       <TestRideSection />
 
       {/* Latest Blog & News */}
-      <BlogSection />
+      {/* <BlogSection /> */}
 
       {/* Newsletter signup strip */}
       <NewsletterSection />
 
       {/* Frequently Asked Questions */}
-      <FaqSection />
+      {/* <FaqSection /> */}
 
       {/* Global Footer */}
       <Footer />

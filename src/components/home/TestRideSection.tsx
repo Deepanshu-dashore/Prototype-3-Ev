@@ -26,11 +26,11 @@ export default function TestRideSection() {
   };
 
   return (
-    <section className="py-2 sm:py-4 w-full px-4 lg:px-6 bg-slate-50 text-white transition-colors duration-300">
+    <section className="py-2 sm:py-4 w-full px-4 lg:px-6 bg-[#070707] text-white transition-colors duration-300">
       <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
         
         {/* Left Container: Why Choose Ziko EV? (3 cols) */}
-        <div className="lg:col-span-3 bg-[#070b13] text-white rounded-[24px] border border-slate-900 p-6 lg:p-8 flex flex-col justify-between transition-colors duration-300">
+        <div className="lg:col-span-3 bg-[#121214] text-white rounded-[24px] border border-zinc-800/80 p-6 lg:p-8 flex flex-col justify-between transition-colors duration-300">
           <div>
             <span className="font-sans text-[11px] font-extrabold text-[#BFFF07] tracking-widest uppercase block mb-6">
               WHY CHOOSE ZIKO EV?
@@ -39,53 +39,53 @@ export default function TestRideSection() {
             <div className="space-y-6">
               {/* Feature 1 */}
               <div className="flex gap-4 items-start text-left">
-                <div className="w-10 h-10 rounded-full border border-slate-800 flex items-center justify-center text-white shrink-0 bg-slate-900/50">
+                <div className="w-10 h-10 rounded-full border border-zinc-800 flex items-center justify-center text-white shrink-0 bg-zinc-900/50">
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                   </svg>
                 </div>
                 <div>
                   <h3 className="font-sans text-xs font-bold text-white uppercase tracking-wider">100% Made in India</h3>
-                  <p className="font-sans text-[10px] text-slate-400 mt-1 leading-relaxed font-medium">Proudly designed & manufactured in India.</p>
+                  <p className="font-sans text-[10px] text-zinc-400 mt-1 leading-relaxed font-medium">Proudly designed & manufactured in India.</p>
                 </div>
               </div>
 
               {/* Feature 2 */}
               <div className="flex gap-4 items-start text-left">
-                <div className="w-10 h-10 rounded-full border border-slate-800 flex items-center justify-center text-white shrink-0 bg-slate-900/50">
+                <div className="w-10 h-10 rounded-full border border-zinc-800 flex items-center justify-center text-white shrink-0 bg-zinc-900/50">
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                 </div>
                 <div>
                   <h3 className="font-sans text-xs font-bold text-white uppercase tracking-wider">Advanced Technology</h3>
-                  <p className="font-sans text-[10px] text-slate-400 mt-1 leading-relaxed font-medium">Cutting-edge tech for superior performance.</p>
+                  <p className="font-sans text-[10px] text-zinc-400 mt-1 leading-relaxed font-medium">Cutting-edge tech for superior performance.</p>
                 </div>
               </div>
 
               {/* Feature 3 */}
               <div className="flex gap-4 items-start text-left">
-                <div className="w-10 h-10 rounded-full border border-slate-800 flex items-center justify-center text-white shrink-0 bg-slate-900/50">
+                <div className="w-10 h-10 rounded-full border border-zinc-800 flex items-center justify-center text-white shrink-0 bg-zinc-900/50">
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                   </svg>
                 </div>
                 <div>
                   <h3 className="font-sans text-xs font-bold text-white uppercase tracking-wider">Trusted by Thousands</h3>
-                  <p className="font-sans text-[10px] text-slate-400 mt-1 leading-relaxed font-medium">10,000+ happy customers across India.</p>
+                  <p className="font-sans text-[10px] text-zinc-400 mt-1 leading-relaxed font-medium">10,000+ happy customers across India.</p>
                 </div>
               </div>
 
               {/* Feature 4 */}
               <div className="flex gap-4 items-start text-left">
-                <div className="w-10 h-10 rounded-full border border-slate-800 flex items-center justify-center text-white shrink-0 bg-slate-900/50">
+                <div className="w-10 h-10 rounded-full border border-zinc-800 flex items-center justify-center text-white shrink-0 bg-zinc-900/50">
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                   </svg>
                 </div>
                 <div>
                   <h3 className="font-sans text-xs font-bold text-white uppercase tracking-wider">Wide Service Network</h3>
-                  <p className="font-sans text-[10px] text-slate-400 mt-1 leading-relaxed font-medium">500+ service centers & growing.</p>
+                  <p className="font-sans text-[10px] text-zinc-400 mt-1 leading-relaxed font-medium">500+ service centers & growing.</p>
                 </div>
               </div>
             </div>
@@ -93,12 +93,12 @@ export default function TestRideSection() {
         </div>
 
         {/* Right Container: Story + Stats + Book Test Ride (9 cols) */}
-        <div className="lg:col-span-9 bg-[#070b13] text-white rounded-[24px] border border-slate-900 overflow-hidden grid grid-cols-1 md:grid-cols-12 transition-colors duration-300">
+        <div className="lg:col-span-9 bg-[#121214] text-white rounded-[24px] border border-zinc-800/80 overflow-hidden grid grid-cols-1 md:grid-cols-12 transition-colors duration-300">
           
           {/* Sub-column 1: Story (4 cols) */}
-          <div className="md:col-span-4 p-8 lg:p-10 flex flex-col justify-between bg-gradient-to-br from-blue-700 via-blue-800 to-blue-950 relative overflow-hidden">
+          <div className="md:col-span-4 p-8 lg:p-10 flex flex-col justify-between bg-gradient-to-br from-zinc-800 via-zinc-900 to-black relative overflow-hidden">
             {/* Glow effect */}
-            <div className="absolute -left-10 -top-10 w-44 h-44 bg-blue-500/30 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute -left-10 -top-10 w-44 h-44 bg-[#BFFF07]/10 rounded-full blur-3xl pointer-events-none" />
             
             <div>
               <div className="w-16 h-16 rounded-[16px] border border-white/10 bg-white/5 flex items-center justify-center mb-8 relative z-10">
@@ -122,7 +122,7 @@ export default function TestRideSection() {
           </div>
 
           {/* Sub-column 2: Stats (3 cols) */}
-          <div className="md:col-span-3 p-6 lg:p-8 grid grid-cols-2 md:flex md:flex-col justify-center gap-6 border-y md:border-y-0 md:border-r border-slate-900 bg-[#070b13]">
+          <div className="md:col-span-3 p-6 lg:p-8 grid grid-cols-2 md:flex md:flex-col justify-center gap-6 border-y md:border-y-0 md:border-r border-zinc-800/80 bg-[#121214]">
             {/* Stat 1 */}
             <div className="flex items-center gap-3 text-left">
               <div className="w-9 h-9 rounded-full border border-[#BFFF07]/20 flex items-center justify-center text-[#BFFF07] shrink-0">
@@ -132,7 +132,7 @@ export default function TestRideSection() {
               </div>
               <div>
                 <span className="block font-sans text-sm font-black text-white leading-none">10,000+</span>
-                <span className="block text-[8px] text-slate-400 font-bold uppercase tracking-wider mt-1">Happy Customers</span>
+                <span className="block text-[8px] text-zinc-400 font-bold uppercase tracking-wider mt-1">Happy Customers</span>
               </div>
             </div>
 
@@ -145,7 +145,7 @@ export default function TestRideSection() {
               </div>
               <div>
                 <span className="block font-sans text-sm font-black text-white leading-none">500+</span>
-                <span className="block text-[8px] text-slate-400 font-bold uppercase tracking-wider mt-1">Service Centers</span>
+                <span className="block text-[8px] text-zinc-400 font-bold uppercase tracking-wider mt-1">Service Centers</span>
               </div>
             </div>
 
@@ -159,7 +159,7 @@ export default function TestRideSection() {
               </div>
               <div>
                 <span className="block font-sans text-sm font-black text-white leading-none">15+</span>
-                <span className="block text-[8px] text-slate-400 font-bold uppercase tracking-wider mt-1">States Covered</span>
+                <span className="block text-[8px] text-zinc-400 font-bold uppercase tracking-wider mt-1">States Covered</span>
               </div>
             </div>
 
@@ -172,13 +172,13 @@ export default function TestRideSection() {
               </div>
               <div>
                 <span className="block font-sans text-sm font-black text-white leading-none">99%</span>
-                <span className="block text-[8px] text-slate-400 font-bold uppercase tracking-wider mt-1">Qlt Products</span>
+                <span className="block text-[8px] text-zinc-400 font-bold uppercase tracking-wider mt-1">Qlt Products</span>
               </div>
             </div>
           </div>
 
           {/* Sub-column 3: Book Test Ride Form + Scooter Image (5 cols) */}
-          <div className="md:col-span-5 p-6 lg:p-8 relative overflow-hidden bg-[#070b13] flex flex-col justify-center min-h-[380px] md:min-h-0">
+          <div className="md:col-span-5 p-6 lg:p-8 relative overflow-hidden bg-[#121214] flex flex-col justify-center min-h-[380px] md:min-h-0">
             {/* Background Scooter Image (Full Column Background, positioned to show scooter on the right) */}
             <div className="absolute inset-0 z-0 pointer-events-none select-none hidden md:block">
               <Image 
@@ -189,7 +189,7 @@ export default function TestRideSection() {
                 className="object-cover object-[82%_center]" 
               />
               {/* Dark overlay to ensure form readability on the left */}
-              <div className="absolute inset-0 bg-gradient-to-r from-[#070b13] via-[#070b13]/85 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#121214] via-[#121214]/85 to-transparent" />
             </div>
 
             {/* Form Container (Left Aligned, Full Width on mobile) */}
@@ -197,7 +197,7 @@ export default function TestRideSection() {
               <span className="font-sans text-[11px] font-bold text-[#BFFF07] tracking-widest uppercase block mb-1">
                 BOOK A TEST RIDE
               </span>
-              <h3 className="font-sans text-[10px] text-slate-400 font-medium tracking-wide mb-5">
+              <h3 className="font-sans text-[10px] text-zinc-400 font-medium tracking-wide mb-5">
                 Experience the future of mobility.
               </h3>
               
@@ -213,12 +213,12 @@ export default function TestRideSection() {
                       required
                       value={testRideForm.scooter}
                       onChange={(e) => setTestRideForm(prev => ({...prev, scooter: e.target.value}))}
-                      className="w-full bg-[#0d121f]/90 border border-slate-800 rounded-[8px] pl-4 pr-10 py-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#BFFF07] focus:ring-1 focus:ring-[#BFFF07]/20 transition-all duration-300 appearance-none cursor-pointer"
+                      className="w-full bg-zinc-900 border border-zinc-800 rounded-[8px] pl-4 pr-10 py-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#BFFF07] focus:ring-1 focus:ring-[#BFFF07]/20 transition-all duration-300 appearance-none cursor-pointer"
                     >
-                      <option value="" disabled className="bg-slate-950">Select Scooter</option>
-                      <option value="ziko-one" className="bg-slate-950">Ziko One (Flagship)</option>
-                      <option value="ziko-lite" className="bg-slate-950">Ziko Lite (Standard)</option>
-                      <option value="ziko-go" className="bg-slate-950">Ziko Go (Lightweight)</option>
+                      <option value="" disabled className="bg-zinc-950">Select Scooter</option>
+                      <option value="ziko-one" className="bg-zinc-950">Ziko One (Flagship)</option>
+                      <option value="ziko-lite" className="bg-zinc-950">Ziko Lite (Standard)</option>
+                      <option value="ziko-go" className="bg-zinc-950">Ziko Go (Lightweight)</option>
                     </select>
                     <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-[#BFFF07]">
                       <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
@@ -235,7 +235,7 @@ export default function TestRideSection() {
                       placeholder="Full Name"
                       value={testRideForm.name}
                       onChange={(e) => setTestRideForm(prev => ({...prev, name: e.target.value}))}
-                      className="w-full bg-[#0d121f]/90 border border-slate-800 rounded-[8px] px-4 py-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#BFFF07] focus:ring-1 focus:ring-[#BFFF07]/20 transition-all duration-300"
+                      className="w-full bg-zinc-900 border border-zinc-800 rounded-[8px] px-4 py-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#BFFF07] focus:ring-1 focus:ring-[#BFFF07]/20 transition-all duration-300"
                     />
                   </div>
 
@@ -247,7 +247,7 @@ export default function TestRideSection() {
                       placeholder="Mobile Number"
                       value={testRideForm.mobile}
                       onChange={(e) => setTestRideForm(prev => ({...prev, mobile: e.target.value}))}
-                      className="w-full bg-[#0d121f]/90 border border-slate-800 rounded-[8px] px-4 py-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#BFFF07] focus:ring-1 focus:ring-[#BFFF07]/20 transition-all duration-300"
+                      className="w-full bg-zinc-900 border border-zinc-800 rounded-[8px] px-4 py-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#BFFF07] focus:ring-1 focus:ring-[#BFFF07]/20 transition-all duration-300"
                     />
                   </div>
 
@@ -257,14 +257,14 @@ export default function TestRideSection() {
                       required
                       value={testRideForm.city}
                       onChange={(e) => setTestRideForm(prev => ({...prev, city: e.target.value}))}
-                      className="w-full bg-[#0d121f]/90 border border-slate-800 rounded-[8px] pl-4 pr-10 py-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#BFFF07] focus:ring-1 focus:ring-[#BFFF07]/20 transition-all duration-300 appearance-none cursor-pointer"
+                      className="w-full bg-zinc-900 border border-zinc-800 rounded-[8px] pl-4 pr-10 py-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#BFFF07] focus:ring-1 focus:ring-[#BFFF07]/20 transition-all duration-300 appearance-none cursor-pointer"
                     >
-                      <option value="" disabled className="bg-slate-950">Select City</option>
-                      <option value="delhi" className="bg-slate-950">Delhi / NCR</option>
-                      <option value="mumbai" className="bg-slate-950">Mumbai</option>
-                      <option value="bangalore" className="bg-slate-950">Bangalore</option>
-                      <option value="pune" className="bg-slate-950">Pune</option>
-                      <option value="hyderabad" className="bg-slate-950">Hyderabad</option>
+                      <option value="" disabled className="bg-zinc-950">Select City</option>
+                      <option value="delhi" className="bg-zinc-950">Delhi / NCR</option>
+                      <option value="mumbai" className="bg-zinc-950">Mumbai</option>
+                      <option value="bangalore" className="bg-zinc-950">Bangalore</option>
+                      <option value="pune" className="bg-zinc-950">Pune</option>
+                      <option value="hyderabad" className="bg-zinc-950">Hyderabad</option>
                     </select>
                     <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-[#BFFF07]">
                       <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>

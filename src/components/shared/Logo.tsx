@@ -62,8 +62,8 @@ export default function Logo({ variant = "full", className = "", size, light = t
       <img
         src="/products/logo123.jpg?v=2"
         alt="Ziko EV Logo"
-        style={{ height: size ? `${size}px` : "32px", width: "auto" }}
-        className="object-contain"
+        style={{ height: size ? `${size}px` : undefined, width: "auto" }}
+        className={`object-contain ${size ? "" : "h-10 md:h-12"}`}
       />
     </div>
   );

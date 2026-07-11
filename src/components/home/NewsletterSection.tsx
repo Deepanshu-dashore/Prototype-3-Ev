@@ -4,8 +4,8 @@ import Image from "next/image";
 
 export default function NewsletterSection() {
   return (
-    <section className="py-2 sm:py-4 w-full px-4 lg:px-6 bg-slate-50 transition-all duration-300">
-      <div className="max-w-[1440px] mx-auto bg-slate-950 text-white rounded-[24px] border border-slate-900 p-8 md:p-10 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6">
+    <section className="py-2 sm:py-4 w-full px-4 lg:px-6 bg-[#070707] transition-all duration-300">
+      <div className="max-w-[1440px] mx-auto bg-[#121212] text-white rounded-[24px] border border-zinc-800/80 p-8 md:p-10 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6">
         
         {/* Left Side: Title, Subtitle & Form */}
         <div className="relative z-10 text-left flex flex-col xl:flex-row items-stretch xl:items-center gap-6 w-full xl:w-auto">
@@ -13,7 +13,7 @@ export default function NewsletterSection() {
             <h2 className="font-sans text-xl sm:text-2xl font-black uppercase tracking-wide text-white transition-colors duration-300">
               Stay Ahead. Stay Electric.
             </h2>
-            <p className="font-sans text-xs text-slate-400 mt-1.5 font-medium max-w-sm transition-colors duration-300">
+            <p className="font-sans text-xs text-zinc-400 mt-1.5 font-medium max-w-sm transition-colors duration-300">
               Subscribe to get the latest updates, offers & product launches.
             </p>
           </div>
@@ -22,7 +22,7 @@ export default function NewsletterSection() {
             <input 
               type="email" 
               placeholder="Enter your email address" 
-              className="w-full bg-slate-900 border border-slate-800 rounded-[8px] px-4 py-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#BFFF07] transition-all duration-300"
+              className="w-full bg-zinc-900/60 border border-zinc-800 rounded-[8px] px-4 py-3 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-[#BFFF07] transition-all duration-300"
             />
             <button className="bg-[#BFFF07] hover:bg-[#a6df05] text-black font-sans text-[10px] font-black uppercase px-6 py-3 rounded-[8px] tracking-widest transition-colors sm:shrink-0 text-center shadow-[0_0_15px_rgba(191,255,7,0.25)]">
               Subscribe
