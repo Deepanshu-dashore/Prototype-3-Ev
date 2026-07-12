@@ -1,7 +1,42 @@
 const { execSync } = require('child_process');
 const readline = require('readline');
+const fs = require('fs');
+const path = require('path');
 
-const TARGET_REPO = 'https://github.com/Deepanshu-dashore/Prototype-3-Ev.git';
+// Load environment variables from local .env files if present
+function loadEnv() {
+  const envFiles = ['.env.local', '.env'];
+  for (const file of envFiles) {
+    const filePath = path.join(__dirname, '..', file);
+    if (fs.existsSync(filePath)) {
+      try {
+        const content = fs.readFileSync(filePath, 'utf8');
+        content.split(/\r?\n/).forEach(line => {
+          const trimmed = line.trim();
+          if (trimmed && !trimmed.startsWith('#')) {
+            const index = trimmed.indexOf('=');
+            if (index !== -1) {
+              const key = trimmed.substring(0, index).trim();
+              let val = trimmed.substring(index + 1).trim();
+              if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
+                val = val.slice(1, -1);
+              }
+              if (key && !process.env[key]) {
+                process.env[key] = val;
+              }
+            }
+          }
+        });
+      } catch (e) {
+        // Fallback silently if parsing fails
+      }
+    }
+  }
+}
+
+loadEnv();
+
+const TARGET_REPO = process.env.STAGE_REPO_URL || 'https://github.com/Deepanshu-dashore/Prototype-3-Ev.git';
 const REMOTE_NAME = 'stage';
 
 function runCommand(command, options = {}) {
